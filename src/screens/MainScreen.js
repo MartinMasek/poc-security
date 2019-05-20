@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import AuthScreen from './AuthScreen';
 
 class MainScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { loginSuccess: false }
+    }
+
     render() {
-        if (!this.props.loginSuccess) {
+        if (!this.state.loginSuccess) {
             return (
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>
-                        LOGIN SCREEN
-                              </Text>
-                </View>
+                <AuthScreen
+                    onLoginSuccess={() => this.setState({ loginSuccess: true })}
+                />
             );
         }
 
@@ -26,7 +30,7 @@ class MainScreen extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        loginSuccess: true
+        // loginSuccess: true
     }
 }
 
