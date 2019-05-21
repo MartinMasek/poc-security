@@ -2,18 +2,30 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import AuthScreen from './AuthScreen';
+import { setProfile } from '../services/actions/profile';
+import { isUserLogged } from '../services/reducers/profile';
 
 class MainScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = { loginSuccess: false }
+
+        this._onLoginSuccess = this._onLoginSuccess.bind(this);
+    }
+
+    _onLoginSuccess(profileData) {
+        // Mock for now
+        this.props.setProfile({
+            email: "joe@testCompany.com",
+            accessToken: "0000-0000-0000-0000"
+        });
     }
 
     render() {
-        if (!this.state.loginSuccess) {
+        if (!this.props.isUserLogged) {
             return (
                 <AuthScreen
-                    onLoginSuccess={() => this.setState({ loginSuccess: true })}
+                    onLoginSuccess={(profileData) => this._onLoginSuccess(profileData)}
                 />
             );
         }
@@ -30,8 +42,14 @@ class MainScreen extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        // loginSuccess: true
+        isUserLogged: isUserLogged(state)
     }
 }
 
-export default connect(mapStateToProps)(MainScreen)
+const mapDispatchToProps = dispatch => {
+    return {
+        setProfile: (profileData) => dispatch(setProfile(profileData))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen)
