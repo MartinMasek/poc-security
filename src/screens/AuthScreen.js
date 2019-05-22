@@ -62,7 +62,7 @@ export class AuthScreen extends React.Component {
                                     email: "joe@testCompany.com",
                                     accessToken: "0000-0000-0000-0000"
                                 });
-                            }, 1700)
+                            }, 1300)
                         }}
                         title="Simulate login"
                     />

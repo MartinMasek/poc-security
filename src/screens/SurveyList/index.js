@@ -40,8 +40,9 @@ export class SurveyList extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: 24 }}>
+            <View style={{ flex: 1 }}>
                 <FlatList
+                    style={{ paddingTop: 24 }}
                     data={this.props.surveyList}
                     renderItem={({ item }) => this._renderItem(item)}
                     keyExtractor={(item) => item.id}

@@ -49,8 +49,9 @@ export class SurveyOverview extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: 24, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}>
+            <View style={{ flex: 1, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}>
                 <FlatList
+                    style={{ paddingTop: 24}}
                     data={this.props.data.areas}
                     renderItem={({ item }) => this._renderArea(item)}
                     keyExtractor={(item, index) => index}
