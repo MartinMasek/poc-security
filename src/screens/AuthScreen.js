@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button, ActivityIndicator, WebView, StyleSheet } from 'react-native';
 import { AuthSession } from 'expo';
+import { colors } from '../assets/globalStyles';
 
 export default class AuthScreen extends React.Component {
 
@@ -12,11 +13,15 @@ export default class AuthScreen extends React.Component {
 
     _handlePressAsync = async () => {
         let redirectUrl = AuthSession.getRedirectUrl();
+        console.log(redirectUrl);
         let result = await AuthSession.startAsync({
             authUrl:
-                `https://login.microsoftonline.com/6b5bebd1-2726-4f17-8aed-3d3ffb415c54/oauth2/authorize?client_id=31fc597b-5bfb-4301-ae76-c91c14a63793` +
-                `&redirect_uri=${encodeURIComponent(redirectUrl)}`,
+                `https://login.microsoftonline.com/6b5bebd1-2726-4f17-8aed-3d3ffb415c54/oauth2/authorize?client_id=31fc597b-5bfb-4301-ae76-c91c14a63793`
+                + `&redirect_uri=${encodeURIComponent(redirectUrl)}`,
+            // authUrl:
+            // "https://login.microsoftonline.com/logout.srf"
         });
+        console.log(result);
         this.setState({ result });
     };
 
@@ -50,7 +55,7 @@ export default class AuthScreen extends React.Component {
                         title="Simulate login"
                     />
                 </View>
-                {this.state.loading && <ActivityIndicator size="large" color="gray" />}
+                {this.state.loading && <ActivityIndicator size="large" color={colors.primaryColor} />}
             </View>
         );
     }
@@ -58,8 +63,8 @@ export default class AuthScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-  });
+});

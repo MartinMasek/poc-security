@@ -1,0 +1,41 @@
+{
+    "profile": null,
+    "surveys": [
+        {
+            "id": "c63d7d11-734c-4a3f-a480-cde8d867209c",
+            "name": "ALCS Corporate Security Survey",
+            "isError": false,
+            "errorMsg": null,
+            "areas": [
+                {
+                    "name": "ADMINISTRATIVE",
+                    "sections": [
+                        {
+                            "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+                            "code": "A1",
+                            "name": "Emergency Contacts",
+                            "lastServerSync": 1548144114000,
+                            "lastModification": 1548140514000,
+                            "initialQuestions": [],
+                            "numberedQuestions": []
+                        }
+                    ]
+                },
+                {
+                    "name": "TECHNICAL SECURITY",
+                    "sections": [
+                        {
+                            "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+                            "code": "B1",
+                            "name": "Fire / Rescue, Chemical / Biological, Life Safety",
+                            "lastServerSync": 1548144114000,
+                            "lastModification": 1548140514000,
+                            "initialQuestions": [],
+                            "numberedQuestions": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

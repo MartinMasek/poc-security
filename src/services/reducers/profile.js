@@ -6,6 +6,7 @@ const initState = {
 }
 
 export const isUserLogged = (state) => {
+    if (!state.profile) return false;
     return (state.profile.accessToken);
 }
 
