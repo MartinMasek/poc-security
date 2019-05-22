@@ -1,9 +1,13 @@
 import React from 'react';
 import { View, Text, Button, ActivityIndicator, WebView, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import { AuthSession } from 'expo';
 import { colors } from '../assets/globalStyles';
+import { MAIN_SCREEN } from '../../navigation/constants';
+import { isUserLogged } from '../services/reducers/profile';
+import { setProfile } from '../services/actions/profile';
 
-export default class AuthScreen extends React.Component {
+export class AuthScreen extends React.Component {
 
     constructor(props) {
         super(props);
@@ -24,6 +28,11 @@ export default class AuthScreen extends React.Component {
         console.log(result);
         this.setState({ result });
     };
+
+    _onLoginSuccess(profileData) {
+        this.props.setProfile(profileData);
+        this.props.navigation.navigate(MAIN_SCREEN);
+    }
 
     render() {
         // return (
@@ -49,7 +58,10 @@ export default class AuthScreen extends React.Component {
                             this.setState({ loading: true });
                             setTimeout(() => {
                                 this.setState({ loading: false });
-                                this.props.onLoginSuccess();
+                                this._onLoginSuccess({
+                                    email: "joe@testCompany.com",
+                                    accessToken: "0000-0000-0000-0000"
+                                });
                             }, 1700)
                         }}
                         title="Simulate login"
@@ -60,6 +72,20 @@ export default class AuthScreen extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isUserLogged: isUserLogged(state)
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setProfile: (profileData) => dispatch(setProfile(profileData)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen)
 
 const styles = StyleSheet.create({
     container: {

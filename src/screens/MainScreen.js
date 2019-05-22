@@ -1,60 +1,61 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, Button } from 'react-native';
 import { connect } from 'react-redux';
-import AuthScreen from './AuthScreen';
 import { setProfile } from '../services/actions/profile';
 import { isUserLogged } from '../services/reducers/profile';
 import { loadAppData } from '../services/actions/app';
 import { colors } from '../assets/globalStyles';
+import SurveyList from './SurveyList';
+import { AUTH_SCREEN, APP_SCREEN } from '../../navigation/constants';
+import { renderIf } from '../services/api/utils';
 
 class MainScreen extends React.Component {
+
     constructor(props) {
         super(props);
-        this.state = { loadingData: false }
-
-        this._onLoginSuccess = this._onLoginSuccess.bind(this);
+        this.state = { error: "" }
     }
 
-    async _onLoginSuccess(profileData) {
-        // Mock for now
-        this.props.setProfile({
-            email: "joe@testCompany.com",
-            accessToken: "0000-0000-0000-0000"
-        });
-        this.setState({ loadingData: true });
+    async componentDidMount() {
+        console.log("IS logged " + this.props.isUserLogged);
+        if (!this.props.isUserLogged) {
+            this.props.navigation.navigate(AUTH_SCREEN);
+            return;
+        }
         try {
             await this.props.loadAppData();
-            this.setState({ loadingData: false });
+            this.props.navigation.navigate(APP_SCREEN)
         }
         catch (e) {
-            this.setState({ loadingData: false });
-            alert("Error loading app data: " + e ? e.toString() : "");
+            this.setState({ error: "Error loading app data: " + e ? e.toString() : "" })
         }
     }
 
     render() {
-        if (!this.props.isUserLogged) {
-            return (
-                <AuthScreen
-                    onLoginSuccess={(profileData) => this._onLoginSuccess(profileData)}
-                />
-            );
-        }
-
-        if (this.state.loadingData) return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <ActivityIndicator size="large" color={colors.primaryColor} />
-                <Text style={{ marginTop: 8 }}>Loading data ...</Text>
-            </View>
-        )
-
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>
-                    Main app
-            </Text>
+                {renderIf(this.state.error == "")(
+                    <View>
+                        <ActivityIndicator size="large" color={colors.primaryColor} />
+                        <Text style={{ marginTop: 8 }}>Loading data ...</Text>
+                    </View>
+                )}
+                <Text style={{ marginTop: 8, color: 'red' }}>{this.state.error}</Text>
+                {renderIf(this.state.error != "")(
+                    <View
+                        style={{ marginTop: 24 }}
+                    >
+                        <Button
+                            title="Refresh"
+                            onPress={() => {
+                                this.setState({ error: "" });
+                                this.componentDidMount();
+                            }}
+                        />
+                    </View>
+                )}
             </View>
-        );
+        )
     }
 }
 

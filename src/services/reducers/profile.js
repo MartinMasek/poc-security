@@ -7,7 +7,7 @@ const initState = {
 
 export const isUserLogged = (state) => {
     if (!state.profile) return false;
-    return (state.profile.accessToken);
+    return (state.profile.accessToken !== null && state.profile.accessToken !== undefined);
 }
 
 export function profileReducer(state = initState, action = { type: {}, payload: {} }) {
