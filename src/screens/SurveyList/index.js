@@ -1,14 +1,65 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList, TouchableHighlight } from 'react-native';
+import { connect } from 'react-redux';
 import { SURVEY_OVERVIEW } from '../../../navigation/constants';
+import { getSurveyList } from '../../services/reducers/survey';
+import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
 
-export default class SurveyList extends React.Component {
+export class SurveyList extends React.Component {
+    static navigationOptions = {
+        title: 'Surveys',
+        headerLeft: null,
+        headerRight: null
+    };
+
+    constructor(props) {
+        super(props);
+        this._renderItem = this._renderItem.bind(this);
+    }
+
+    componentDidMount() {
+
+    }
+
+    _renderItem(item) {
+        return (
+            <TouchableHighlight onPress={() => this.props.navigation.navigate(SURVEY_OVERVIEW, { id: item.id })}
+                underlayColor={colors.buttonLightPressedAreaColor}>
+                <View style={{
+                    height: 60, alignItems: 'center', flexDirection: 'row',
+                    paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
+                    borderColor: colors.navigationUIColor,
+                    borderBottomWidth: 1,
+                    borderTopWidth: 1
+                }}>
+                    <Text style={{ fontSize: 17 }}>{item.name}</Text>
+                </View>
+            </TouchableHighlight>
+        );
+    }
 
     render() {
         return (
-            <View>
-                <Text onPress={() => this.props.navigation.navigate(SURVEY_OVERVIEW, { id: 1 })}>Survey 1</Text>
+            <View style={{ flex: 1, paddingTop: 24 }}>
+                <FlatList
+                    data={this.props.surveyList}
+                    renderItem={({ item }) => this._renderItem(item)}
+                    keyExtractor={(item) => item.id}
+                />
             </View>
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        surveyList: getSurveyList(state)
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyList)
