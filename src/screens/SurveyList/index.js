@@ -23,7 +23,7 @@ export class SurveyList extends React.Component {
 
     _renderItem(item) {
         return (
-            <TouchableHighlight onPress={() => this.props.navigation.navigate(SURVEY_OVERVIEW, { id: item.id })}
+            <TouchableHighlight onPress={() => this.props.navigation.navigate(SURVEY_OVERVIEW, { id: item.id, name: item.name })}
                 underlayColor={colors.buttonLightPressedAreaColor}>
                 <View style={{
                     height: 60, alignItems: 'center', flexDirection: 'row',

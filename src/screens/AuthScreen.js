@@ -21,7 +21,7 @@ export class AuthScreen extends React.Component {
         let result = await AuthSession.startAsync({
             authUrl:
                 `https://login.microsoftonline.com/6b5bebd1-2726-4f17-8aed-3d3ffb415c54/oauth2/authorize?client_id=31fc597b-5bfb-4301-ae76-c91c14a63793`
-                + `&redirect_uri=${encodeURIComponent(redirectUrl)}`,
+                + `&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code`,
             // authUrl:
             // "https://login.microsoftonline.com/logout.srf"
         });
@@ -37,7 +37,7 @@ export class AuthScreen extends React.Component {
     render() {
         // return (
         //     <View style={styles.container}>
-        //         <Button title="Open FB Auth" onPress={this._handlePressAsync} />
+        //         <Button title="Open AAD Auth" onPress={this._handlePressAsync} />
         //         {this.state.result ? (
         //             <Text>{JSON.stringify(this.state.result)}</Text>
         //         ) : null}

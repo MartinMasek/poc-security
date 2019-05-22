@@ -22,7 +22,8 @@ const AppStack = createStackNavigator({
           borderBottomWidth: 0,
           shadowColor: 'transparent',
           elevation: 0,
-          shadowOpacity: 0
+          shadowOpacity: 0,
+          // backgroundColor: colors.primaryColor
         },
         headerTitleStyle: {
           fontWeight: fonts.semibold,

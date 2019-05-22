@@ -7,7 +7,7 @@ export const loadAppData = () => {
         try {
             // This simulates fetching data from the server or local DB
             const data = await new Promise((res, rej) => {
-                setTimeout(() => res(require('../../../assets/data/mock_v1.json')), 100);
+                setTimeout(() => res(require('../../../assets/data/mock_v1.json')), 600);
             })
             dispatch({
                 type: LOAD_APP_DATA,

@@ -18,6 +18,15 @@
                             "lastModification": 1548140514000,
                             "initialQuestions": [],
                             "numberedQuestions": []
+                        },
+                        {
+                            "id": "458b7aec-4494-4f86-b0a1-b8ea79399c2b",
+                            "code": "A2",
+                            "name": "Facility Description",
+                            "lastServerSync": 1548144114000,
+                            "lastModification": 1548140514000,
+                            "initialQuestions": [],
+                            "numberedQuestions": []
                         }
                     ]
                 },
@@ -28,6 +37,24 @@
                             "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
                             "code": "B1",
                             "name": "Fire / Rescue, Chemical / Biological, Life Safety",
+                            "lastServerSync": 1548144114000,
+                            "lastModification": 1548140514000,
+                            "initialQuestions": [],
+                            "numberedQuestions": []
+                        },
+                        {
+                            "id": "93ab221b-87e2-41b1-96f1-ea63a38dadb5",
+                            "code": "B2",
+                            "name": "Intrusions / Alarm Systems / Intrusion Detection System (IDS)",
+                            "lastServerSync": 1548144114000,
+                            "lastModification": 1548140514000,
+                            "initialQuestions": [],
+                            "numberedQuestions": []
+                        },
+                        {
+                            "id": "b6bfd167-a346-4b3a-8c0e-f14259cd91ee",
+                            "code": "B4",
+                            "name": "Perimeter Lighting",
                             "lastServerSync": 1548144114000,
                             "lastModification": 1548140514000,
                             "initialQuestions": [],

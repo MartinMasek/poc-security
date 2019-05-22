@@ -5,6 +5,12 @@ export const getSurveyList = (state) => {
     return (state.surveys);
 }
 
+export const getSurveyData = (state, surveyId) => {
+    if (surveyId == null || surveyId == undefined) return {};
+    const data = state.surveys.find(s => s.id == surveyId);
+    return data;
+}
+
 export function surveyReducer(state, action = { type: {}, payload: {} }) {
     switch (action.type) {
         default:
