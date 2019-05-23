@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import { getSurveyData, getSectionData } from '../../services/reducers/survey';
+import { getSectionData } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalStyles';
 import { renderIf } from '../../services/api/utils';
 import { Q_TEXT, Q_DATE } from '../../services/constants'
 import FreeTextInput from './FreeTextInput';
 import DateInput from './DateInput';
+import { updateInput } from '../../services/actions/survey';
 
 export class Section extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -19,6 +20,8 @@ export class Section extends React.Component {
         super(props);
 
         this._renderQuestion = this._renderQuestion.bind(this);
+        this._renderInput = this._renderInput.bind(this);
+        this._updateInput = this._updateInput.bind(this);
     }
 
     _renderQuestion(question) {
@@ -34,10 +37,14 @@ export class Section extends React.Component {
 
     _renderInput(input) {
         switch (input.type) {
-            case Q_TEXT: return <FreeTextInput data={input} />
-            case Q_DATE: return <DateInput data={input} />
+            case Q_TEXT: return <FreeTextInput data={input} updateInput={this._updateInput} />
+            case Q_DATE: return <DateInput data={input} updateInput={this._updateInput} />
             default: return <Text>Unrecognized input type: {input.type}</Text>
         }
+    }
+
+    async _updateInput(inputId, value) {
+        await this.props.updateInput(this.props.surveyId, inputId, value);
     }
 
 
@@ -61,12 +68,14 @@ const mapStateToProps = (state, ownProps) => {
     const surveyId = ownProps.navigation.getParam('surveyId', null);
     const sectionId = ownProps.navigation.getParam('sectionId', null);
     return {
-        data: getSectionData(state, surveyId, sectionId)
+        data: getSectionData(state, surveyId, sectionId),
+        surveyId: surveyId
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
+        updateInput: (surveyId, inputId, value) => dispatch(updateInput(surveyId, inputId, value))
     }
 }
 

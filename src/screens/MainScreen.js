@@ -17,10 +17,10 @@ class MainScreen extends React.Component {
     }
 
     async componentDidMount() {
-        if (!this.props.isUserLogged) {
-            this.props.navigation.navigate(AUTH_SCREEN);
-            return;
-        }
+        // if (!this.props.isUserLogged) {
+        //     this.props.navigation.navigate(AUTH_SCREEN);
+        //     return;
+        // }
         try {
             await this.props.loadAppData();
             this.props.navigation.navigate(APP_SCREEN)

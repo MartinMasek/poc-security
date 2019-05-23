@@ -35,14 +35,14 @@ export class AuthScreen extends React.Component {
     }
 
     render() {
-        // return (
-        //     <View style={styles.container}>
-        //         <Button title="Open AAD Auth" onPress={this._handlePressAsync} />
-        //         {this.state.result ? (
-        //             <Text>{JSON.stringify(this.state.result)}</Text>
-        //         ) : null}
-        //     </View>
-        // );
+        return (
+            <View style={styles.container}>
+                <Button title="Open AAD Auth" onPress={this._handlePressAsync} />
+                {this.state.result ? (
+                    <Text>{JSON.stringify(this.state.result)}</Text>
+                ) : null}
+            </View>
+        );
         // return (
         //     <WebView
         //         source={{ uri: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910' }}

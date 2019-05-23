@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 import { SECTION_DETAIL } from '../../../navigation/constants';
 import { connect } from 'react-redux';
-import { getSurveyData } from '../../services/reducers/survey';
+import { getSurveySections } from '../../services/reducers/survey';
 import { colors, STANDARD_HORIZONTAL_MARGIN } from '../../assets/globalStyles';
 
 export class SurveyOverview extends React.Component {
@@ -19,11 +19,11 @@ export class SurveyOverview extends React.Component {
         this._renderSections = this._renderSections.bind(this);
     }
 
-    _renderArea(area) {
+    _renderArea(item) {
         return (
             <View style={{ marginTop: 24 }}>
-                <Text style={{ fontSize: 22, fontWeight: '500' }}>{area.name}</Text>
-                {this._renderSections(area.sections)}
+                <Text style={{ fontSize: 22, fontWeight: '500' }}>{item.area}</Text>
+                {this._renderSections(item.sections)}
             </View>
         );
     }
@@ -32,7 +32,7 @@ export class SurveyOverview extends React.Component {
         return sections.map((s, index) => {
             return (
                 <TouchableHighlight onPress={() => this.props.navigation.navigate(SECTION_DETAIL,
-                    { surveyId: this.props.data.id, sectionId: s.id, name: s.code + " " + s.name })}
+                    { surveyId: this.props.survey.id, sectionId: s.id, name: s.code + " " + s.name })}
                     underlayColor={colors.buttonLightPressedAreaColor}>
                     <View style={{
                         height: 60, alignItems: 'center', flexDirection: 'row',
@@ -53,7 +53,7 @@ export class SurveyOverview extends React.Component {
             <View style={{ flex: 1, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}>
                 <FlatList
                     style={{ paddingTop: 24 }}
-                    data={this.props.data.areas}
+                    data={this.props.survey.data}
                     renderItem={({ item }) => this._renderArea(item)}
                     keyExtractor={(item, index) => index}
                 />
@@ -65,7 +65,7 @@ export class SurveyOverview extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.navigation.getParam('id', null);
     return {
-        data: getSurveyData(state, id)
+        survey: getSurveySections(state, id)
     }
 }
 

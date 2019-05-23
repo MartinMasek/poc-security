@@ -4,6 +4,7 @@ import { LOAD_APP_DATA } from '../actions/app';
 
 export default function mainReducer(state = {}, action = {}) {
     console.debug("MAIN REDUCER CALLED with action " + action.type)
+    // console.debug(action.payload)
 
     if (action.type == LOAD_APP_DATA) {
         return {
@@ -13,6 +14,6 @@ export default function mainReducer(state = {}, action = {}) {
     }
     return {
         profile: profileReducer(state.profile, action),
-        surveys: surveyReducer(state.survey, action)
+        surveys: surveyReducer(state.surveys, action)
     }
 }

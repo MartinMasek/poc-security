@@ -1,0 +1,128 @@
+{
+    "profile": null,
+    "surveys": [
+        {
+            "id": "c63d7d11-734c-4a3f-a480-cde8d867209c",
+            "name": "Survey for Demo building 1",
+            "isError": false,
+            "errorMsg": null,
+            "sections": [
+                {
+                    "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+                    "code": "A1",
+                    "name": "Emergency Contacts",
+                    "area": "ADMINISTRATIVE",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "initialQuestions": [
+                        {
+                            "title": "Test title for this set",
+                            "inputs": [
+                                {
+                                    "id": "4c842aa4-6c25-4fd4-83eb-1d2f3ec10a3b",
+                                    "text": "Office / Building / Facility Name",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "93893156-fce7-4215-b856-63e4580850ee",
+                                    "text": "Date",
+                                    "value": null,
+                                    "type": "Q_DATE"
+                                }
+                            ]
+                        }
+                    ],
+                    "numberedQuestions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "dca8a7cb-17e9-4e6c-9d35-52ce5ae61463",
+                                    "text": "Building Property Manager",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "57af89fc-4ccf-4a7e-91c8-ef10dd4bba6b",
+                                    "text": "Mailing Address",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "3fa22179-073b-4235-95e7-0d73dafc7daf",
+                                    "text": "City",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "9de35bd4-0d6c-490a-92e3-09102d3f8465",
+                                    "text": "State",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "03a01038-cd9e-4e70-81c1-ee9a13b20ca7",
+                                    "text": "Zip Code",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "61eee8a6-7c5d-4c2e-99de-040259d0c3b8",
+                                    "text": "Daytime Telephone Numbers",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "eb160d55-c113-4dce-b881-7f6767f12053",
+                                    "text": "After hours & weekends",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "458b7aec-4494-4f86-b0a1-b8ea79399c2b",
+                    "code": "A2",
+                    "name": "Facility Description",
+                    "area": "ADMINISTRATIVE",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "initialQuestions": [],
+                    "numberedQuestions": []
+                },
+                {
+                    "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+                    "code": "B1",
+                    "name": "Fire / Rescue, Chemical / Biological, Life Safety",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "initialQuestions": [],
+                    "numberedQuestions": []
+                },
+                {
+                    "id": "93ab221b-87e2-41b1-96f1-ea63a38dadb5",
+                    "code": "B2",
+                    "name": "Intrusions / Alarm Systems / Intrusion Detection System (IDS)",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "initialQuestions": [],
+                    "numberedQuestions": []
+                },
+                {
+                    "id": "b6bfd167-a346-4b3a-8c0e-f14259cd91ee",
+                    "code": "B4",
+                    "name": "Perimeter Lighting",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "initialQuestions": [],
+                    "numberedQuestions": []
+                }
+            ]
+        }
+    ]
+}
