@@ -31,7 +31,8 @@ export class SurveyOverview extends React.Component {
     _renderSections(sections) {
         return sections.map((s, index) => {
             return (
-                <TouchableHighlight onPress={() => this.props.navigation.navigate(SECTION_DETAIL, { id: s.id })}
+                <TouchableHighlight onPress={() => this.props.navigation.navigate(SECTION_DETAIL,
+                    { surveyId: this.props.data.id, sectionId: s.id, name: s.code + " " + s.name })}
                     underlayColor={colors.buttonLightPressedAreaColor}>
                     <View style={{
                         height: 60, alignItems: 'center', flexDirection: 'row',
@@ -51,7 +52,7 @@ export class SurveyOverview extends React.Component {
         return (
             <View style={{ flex: 1, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}>
                 <FlatList
-                    style={{ paddingTop: 24}}
+                    style={{ paddingTop: 24 }}
                     data={this.props.data.areas}
                     renderItem={({ item }) => this._renderArea(item)}
                     keyExtractor={(item, index) => index}
