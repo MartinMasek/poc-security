@@ -4,16 +4,18 @@ import { TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'
 import MainScreen from '../src/screens/MainScreen';
 import AuthScreen from '../src/screens/AuthScreen';
-import { AUTH_SCREEN, MAIN_SCREEN, SURVEY_LIST, SURVEY_OVERVIEW, SECTION_DETAIL, APP_SCREEN } from './constants';
+import { AUTH_SCREEN, MAIN_SCREEN, SURVEY_LIST, SURVEY_OVERVIEW, SECTION_DETAIL, APP_SCREEN, SETTINGS } from './constants';
 import SurveyList from '../src/screens/SurveyList';
 import SurveyOverview from '../src/screens/SurveyOverview';
 import Section from '../src/screens/Section';
 import { STANDARD_HORIZONTAL_MARGIN, fonts, colors } from '../src/assets/globalStyles';
+import Settings from '../src/screens/Settings';
 
 const AppStack = createStackNavigator({
   [SURVEY_LIST]: SurveyList,
   [SURVEY_OVERVIEW]: SurveyOverview,
-  [SECTION_DETAIL]: Section
+  [SECTION_DETAIL]: Section,
+  [SETTINGS]: Settings
 }, {
     initialRouteName: SURVEY_LIST,
     defaultNavigationOptions: ({ navigation }) => {

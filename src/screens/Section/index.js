@@ -27,7 +27,7 @@ export class Section extends React.Component {
 
     _renderQuestion(question, index) {
         return (
-            <View key={`q_${index}`} style={{ marginBottom: 24 }}>
+            <View key={`q_${index}`} style={{ marginBottom: 32 }}>
                 {renderIf(question.title)(
                     <Text style={{ fontSize: fonts.standardFontSize, fontWeight: fonts.semibold }}>{question.title}</Text>
                 )}

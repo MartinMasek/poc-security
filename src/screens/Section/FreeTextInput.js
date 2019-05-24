@@ -14,7 +14,7 @@ export default class FreeTextInput extends React.Component {
         // This is user clicking to the form and away without changing anything
         if (this.props.data.value == text) return;
         // Empty form and user is just clicking around
-        if (this.props.data.value == null && text=='') return;
+        if (this.props.data.value == null && text == '') return;
         this.props.updateInput(this.props.questionIndex, this.props.data.id, text);
     }
 
@@ -23,7 +23,15 @@ export default class FreeTextInput extends React.Component {
         return (
             <InputTemplate text={data.text}>
                 <TextInput
-                    style={{ height: INPUT_HEIGHT, fontSize: fonts.standardFontSize, borderColor: 'gray', backgroundColor: colors.navigationUIColor, borderWidth: 1 }}
+                    style={{
+                        height: INPUT_HEIGHT,
+                        fontSize: fonts.standardFontSize,
+                        borderColor: 'gray',
+                        backgroundColor: colors.navigationUIColor,
+                        borderWidth: 1,
+                        borderRadius: 5,
+                        paddingLeft: 4
+                    }}
                     onChangeText={(text) => this.setState({ text })}
                     value={this.state.text}
                     autoCorrect={false}

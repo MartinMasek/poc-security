@@ -1,15 +1,45 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
-import { SURVEY_OVERVIEW } from '../../../navigation/constants';
+import { SURVEY_OVERVIEW, SETTINGS } from '../../../navigation/constants';
 import { getSurveyList } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
+import { Ionicons } from '@expo/vector-icons';
 
 export class SurveyList extends React.Component {
-    static navigationOptions = {
-        title: 'Surveys',
-        headerLeft: null,
-        headerRight: null
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'Surveys',
+            // We have to do this so we have nice center alignment on Android
+            headerLeft: (
+                <TouchableHighlight
+                    style={{
+                        alignItems: 'center',
+                        backgroundColor: 'transparent',
+                        color: 'transparent',
+                        marginLeft: STANDARD_HORIZONTAL_MARGIN,
+                        marginTop: 4
+                    }}
+                    disabled={true}
+                >
+                    <Ionicons name="md-settings" style={{ color: 'transparent' }} size={28} />
+                </TouchableHighlight>
+            ),
+            headerRight: (
+                <TouchableHighlight
+                    style={{
+                        alignItems: 'center',
+                        backgroundColor: 'rgba(52, 52, 52, 0.0)',
+                        marginRight: STANDARD_HORIZONTAL_MARGIN,
+                        marginTop: 4
+                    }}
+                    onPress={() => navigation.navigate(SETTINGS)}
+                    underlayColor='rgba(52, 52, 52, 0.0)'
+                >
+                    <Ionicons name="md-settings" style={{ color: colors.primaryColor }} size={28} />
+                </TouchableHighlight>
+            ),
+        }
     };
 
     constructor(props) {
@@ -18,7 +48,7 @@ export class SurveyList extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.navigation.navigate(SURVEY_OVERVIEW, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
+        this.props.navigation.navigate(SURVEY_OVERVIEW, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
     }
 
     _renderItem(item) {
@@ -31,7 +61,7 @@ export class SurveyList extends React.Component {
                         paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
                         borderColor: colors.navigationUIColor,
                         borderBottomWidth: 1,
-                        borderTopWidth: 1
+                        borderTopWidth: 1,
                     }}>
                     <Text style={{ fontSize: 17 }}>{item.name}</Text>
                 </View>

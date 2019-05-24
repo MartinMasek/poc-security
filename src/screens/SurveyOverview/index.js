@@ -27,8 +27,8 @@ export class SurveyOverview extends React.Component {
 
     _renderArea(item, index) {
         return (
-            <View style={{ marginTop: 24 }}>
-                <Text style={{ fontSize: 22, fontWeight: '500' }}>{item.area}</Text>
+            <View style={{ marginBottom: 44 }}>
+                <Text style={{ fontSize: 22, marginBottom: 8, fontWeight: '500' }}>{item.area}</Text>
                 {this._renderSections(item.sections)}
                 {renderIf(index == this.props.survey.data.length - 1)(
                     <View style={{ height: 40 }} />
@@ -49,9 +49,15 @@ export class SurveyOverview extends React.Component {
                             height: 60, alignItems: 'center', flexDirection: 'row',
                             borderTopWidth: index == 0 ? 1 : 0,
                             borderLeftWidth: 1, borderRightWidth: 1,
-                            borderBottomWidth: 1, borderColor: colors.navigationUIColor
+                            borderBottomWidth: 1, borderColor: colors.navigationUIColor,
+                            paddingHorizontal: 4
                         }}>
-                        <Text style={{ fontSize: 17 }}>{s.code} {s.name}</Text>
+                        <View style={{ width: 40 }}>
+                            <Text style={{ fontSize: 17 }}>{s.code}</Text>
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ fontSize: 17 }}>{s.name}</Text>
+                        </View>
                     </View>
                 </TouchableHighlight>
             );
@@ -65,7 +71,7 @@ export class SurveyOverview extends React.Component {
                 <FlatList
                     style={{ paddingTop: 24, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}
                     data={this.props.survey.data}
-                    renderItem={({ item,index }) => this._renderArea(item,index)}
+                    renderItem={({ item, index }) => this._renderArea(item, index)}
                     keyExtractor={(item, index) => index.toString()}
                 />
             </View>
