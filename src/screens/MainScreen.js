@@ -5,9 +5,9 @@ import { setProfile } from '../services/actions/profile';
 import { isUserLogged } from '../services/reducers/profile';
 import { loadAppData } from '../services/actions/app';
 import { colors } from '../assets/globalStyles';
-import SurveyList from './SurveyList';
 import { AUTH_SCREEN, APP_SCREEN } from '../../navigation/constants';
 import { renderIf } from '../services/api/utils';
+import { isAppDataInMemory } from '../services/reducers';
 
 class MainScreen extends React.Component {
 
@@ -17,12 +17,18 @@ class MainScreen extends React.Component {
     }
 
     async componentDidMount() {
-        if (!this.props.isUserLogged) {
-            this.props.navigation.navigate(AUTH_SCREEN);
-            return;
-        }
         try {
-            await this.props.loadAppData();
+            // If we have data in memory, we don't need to load data from the local DB
+            // because the in memory should be always fresher
+            if (!this.props.isAppDataInMemory) {
+                console.debug(" --- Loading data from device storage ---")
+                await this.props.loadAppData();
+            }
+            if (!this.props.isUserLogged) {
+                this.props.navigation.navigate(AUTH_SCREEN);
+                return;
+            }
+            // TODO: We should check how fresh are local data and compare it with the server data
             this.props.navigation.navigate(APP_SCREEN)
         }
         catch (e) {
@@ -60,7 +66,8 @@ class MainScreen extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isUserLogged: isUserLogged(state)
+        isUserLogged: isUserLogged(state),
+        isAppDataInMemory: isAppDataInMemory(state)
     }
 }
 
