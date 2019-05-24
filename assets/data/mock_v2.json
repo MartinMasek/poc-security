@@ -34,6 +34,7 @@
                             ]
                         },
                         {
+                            "title": "1",
                             "inputs": [
                                 {
                                     "id": "dca8a7cb-17e9-4e6c-9d35-52ce5ae61463",
@@ -78,6 +79,64 @@
                                     "type": "Q_TEXT"
                                 }
                             ]
+                        },
+                        {
+                            "title": "2 ALCS Point(s) of contact for property management",
+                            "inputs": [
+                                {
+                                    "id": "30b62927-129d-4228-8ecb-d1756582c4dd",
+                                    "text": "Building Manager",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "02f249f9-6d9d-4d3b-9b81-c82313063853",
+                                    "text": "Mailing Address",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "16261d7c-a7ec-4c8a-ab8c-303375991099",
+                                    "text": "City",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "4ee80c03-a003-442f-8d93-d088eb4a6d5d",
+                                    "text": "State",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "574b9e68-5344-479d-b460-ce893accc0ee",
+                                    "text": "Zip Code",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "44c6bc3e-0a30-4c1c-92cb-7f297edfe50d",
+                                    "text": "Daytime Telephone Numbers",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "4d96c79a-6233-42ba-82b7-d91893676c3d",
+                                    "text": "After hours & weekends",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "3 LCS Emergency Information Line",
+                            "inputs": [
+                                {
+                                    "id": "fee761cc-4100-46a7-92f4-3f54b2d8d862",
+                                    "text": "",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -88,7 +147,50 @@
                     "area": "ADMINISTRATIVE",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "questions":[]
+                    "questions": [
+                        {
+                            "title": "Facility",
+                            "notNumbered": true,
+                            "inputs": [
+                                {
+                                    "id": "c9257b12-b89e-4860-93b2-6dc67d6a10a8",
+                                    "text": "Leased Multi-Tenant ALCS Building",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "247c3e93-29a0-4128-993f-6fbb3f61fac7",
+                                    "text": "Leased Single-Tenant ALCS Building",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "5a9ce29c-1070-44cb-abdb-9c336ccb51b2",
+                                    "text": "Altria Building",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "3a036369-512e-40c7-bebf-71a15a61050f",
+                                    "text": "PM USA Building",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "c3d89661-9402-4188-b077-1f1d30f21b0b",
+                                    "text": "John Middleton Building",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "a2c6e8a9-f4d7-4208-9f93-046e77f138a6",
+                                    "text": "Other (explain)",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "635c5758-7183-490a-99ac-7fa3de497a3f",
@@ -97,7 +199,7 @@
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "questions":[]
+                    "questions": []
                 },
                 {
                     "id": "93ab221b-87e2-41b1-96f1-ea63a38dadb5",
@@ -106,7 +208,7 @@
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "questions":[]
+                    "questions": []
                 },
                 {
                     "id": "b6bfd167-a346-4b3a-8c0e-f14259cd91ee",
@@ -115,7 +217,43 @@
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "questions":[]
+                    "questions": []
+                },
+                {
+                    "id": "7a0836a4-31d5-4819-be23-119db3c508a5",
+                    "code": "B8",
+                    "name": "Lock and Key Control",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "questions": []
+                },
+                {
+                    "id": "da98e7d1-db59-47b0-825e-2f0adcdec1b2",
+                    "code": "B9",
+                    "name": "Electronic Screening (Magnetometers / Package Scanners)",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "questions": []
+                },
+                {
+                    "id": "59bed4da-dcc3-4c88-bba0-491a01332272",
+                    "code": "B10",
+                    "name": "Vehicular Access",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "questions": []
+                },
+                {
+                    "id": "0a8be068-1dc3-42ae-9f82-4f93fd60d5dd",
+                    "code": "B12",
+                    "name": "Utility / Cafeteria / Perimeter Protection",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1548140514000,
+                    "questions": []
                 }
             ]
         }

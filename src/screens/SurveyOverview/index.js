@@ -4,6 +4,7 @@ import { SECTION_DETAIL } from '../../../navigation/constants';
 import { connect } from 'react-redux';
 import { getSurveySections } from '../../services/reducers/survey';
 import { colors, STANDARD_HORIZONTAL_MARGIN } from '../../assets/globalStyles';
+import { renderIf } from '../../services/api/utils';
 
 export class SurveyOverview extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -19,11 +20,19 @@ export class SurveyOverview extends React.Component {
         this._renderSections = this._renderSections.bind(this);
     }
 
-    _renderArea(item) {
+    componentDidMount() {
+        // this.props.navigation.navigate(SECTION_DETAIL,
+        //     { surveyId: this.props.survey.id, sectionId: "458b7aec-4494-4f86-b0a1-b8ea79399c2b" });
+    }
+
+    _renderArea(item, index) {
         return (
             <View style={{ marginTop: 24 }}>
                 <Text style={{ fontSize: 22, fontWeight: '500' }}>{item.area}</Text>
                 {this._renderSections(item.sections)}
+                {renderIf(index == this.props.survey.data.length - 1)(
+                    <View style={{ height: 40 }} />
+                )}
             </View>
         );
     }
@@ -52,11 +61,11 @@ export class SurveyOverview extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}>
+            <View style={{ flex: 1 }}>
                 <FlatList
-                    style={{ paddingTop: 24 }}
+                    style={{ paddingTop: 24, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}
                     data={this.props.survey.data}
-                    renderItem={({ item }) => this._renderArea(item)}
+                    renderItem={({ item,index }) => this._renderArea(item,index)}
                     keyExtractor={(item, index) => index.toString()}
                 />
             </View>

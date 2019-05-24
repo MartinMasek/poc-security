@@ -12,7 +12,7 @@ export default class DateInput extends React.Component {
 
     _onDateChange(date) {
         this.props.updateInput(this.props.questionIndex, this.props.data.id, date);
-        
+
     }
 
     render() {
@@ -36,7 +36,8 @@ export default class DateInput extends React.Component {
                             height: INPUT_HEIGHT,
                             backgroundColor: colors.navigationUIColor,
                             borderColor: 'gray',
-                            color: 'black'
+                            color: 'black',
+                            fontSize: fonts.standardFontSize
                         },
                         btnTextConfirm: {
                             color: colors.primaryColor,
