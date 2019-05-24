@@ -39,9 +39,31 @@ export const getSectionData = (state, surveyId, sectionId) => {
     return sectionData;
 }
 
-export function surveyReducer(state, action = { type: {}, payload: {} }) {
+export function surveyReducer(state = [], action = { type: {}, payload: {} }) {
     switch (action.type) {
-        case UPDATE_INPUT:
+        case UPDATE_INPUT: {
+            const { surveyId, sectionId, questionIndex, inputId, value } = action.payload;
+            let result = [];
+            for (let i = 0; i < state.length; i++) {
+                let survey = Object.assign({}, state[i]);
+                if (survey.id == surveyId) {
+                    const newSections = survey.sections.map(s => {
+                        if (s.id != sectionId) return s;
+                        const newQuestions = [...s.questions];
+                        const newInputs = newQuestions[questionIndex].inputs.map(input => {
+                            if (input.id != inputId) return input;
+                            return Object.assign({}, input, { value: value });
+                        })
+                        newQuestions[questionIndex].inputs = newInputs;
+                        s.questions = newQuestions;
+                        return s;
+                    });
+                    survey.sections = newSections;
+                }
+                result.push(survey);
+            }
+            return result;
+        }
         default:
             return state;
     }

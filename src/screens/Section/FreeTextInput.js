@@ -6,15 +6,17 @@ import { colors, fonts } from '../../assets/globalStyles';
 export default class FreeTextInput extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { text: props.value };
-
+        this.state = { text: props.data.value };
         this._onTextChange = this._onTextChange.bind(this);
     }
 
     _onTextChange(text) {
         // This is user clicking to the form and away without changing anything
-        if (this.props.value == text) return;
-        this.props.updateInput(this.props.data.id, text);
+        console.log("New text: " + text);
+        console.log("Saved: " + this.props.data.value);
+        console.log(`${this.props.data.value} == ${text}`);
+        if (this.props.data.value == text) return;
+        this.props.updateInput(this.props.questionIndex, this.props.data.id, text);
     }
 
     render() {

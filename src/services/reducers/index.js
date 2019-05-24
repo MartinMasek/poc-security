@@ -12,8 +12,11 @@ export default function mainReducer(state = {}, action = {}) {
             surveys: action.payload.surveys
         }
     }
-    return {
+    const newState= {
         profile: profileReducer(state.profile, action),
         surveys: surveyReducer(state.surveys, action)
     }
+    // console.log(">>> NEW STATE");
+    // console.log(newState);
+    return newState;
 }

@@ -24,39 +24,39 @@ export class Section extends React.Component {
         this._updateInput = this._updateInput.bind(this);
     }
 
-    _renderQuestion(question) {
+    _renderQuestion(question, index) {
+        console.log("_renderQuestion()");
         return (
             <View style={{ marginBottom: 24 }}>
                 {renderIf(question.title)(
                     <Text style={{ fontSize: fonts.standardFontSize, fontWeight: fonts.semibold }}>{question.title}</Text>
                 )}
-                {question.inputs.map(this._renderInput)}
+                {question.inputs.map(input => this._renderInput(input, index))}
             </View>
         )
     }
 
-    _renderInput(input) {
+    _renderInput(input, index) {
         switch (input.type) {
-            case Q_TEXT: return <FreeTextInput data={input} updateInput={this._updateInput} />
-            case Q_DATE: return <DateInput data={input} updateInput={this._updateInput} />
+            case Q_TEXT: return <FreeTextInput data={input} questionIndex={index} updateInput={this._updateInput} />
+            case Q_DATE: return <DateInput data={input} questionIndex={index} updateInput={this._updateInput} />
             default: return <Text>Unrecognized input type: {input.type}</Text>
         }
     }
 
-    async _updateInput(inputId, value) {
-        await this.props.updateInput(this.props.surveyId, inputId, value);
+    async _updateInput(questionIndex, inputId, value) {
+        await this.props.updateInput(this.props.surveyId, this.props.sectionId, questionIndex, inputId, value);
     }
 
 
     render() {
-        const notNumberedItems = this.props.data ? this.props.data.initialQuestions.map(input => Object.assign({}, input, { notNumbered: true })) : []
-        const questions = notNumberedItems.concat(this.props.data.numberedQuestions);
+        console.log("Section render()");
         return (
             <View style={{ flex: 1 }}>
                 <FlatList
                     style={{ paddingTop: 24, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}
-                    data={questions}
-                    renderItem={({ item }) => this._renderQuestion(item)}
+                    data={this.props.data.questions}
+                    renderItem={({ item, index }) => this._renderQuestion(item, index)}
                     keyExtractor={(item, index) => index}
                 />
             </View>
@@ -69,13 +69,14 @@ const mapStateToProps = (state, ownProps) => {
     const sectionId = ownProps.navigation.getParam('sectionId', null);
     return {
         data: getSectionData(state, surveyId, sectionId),
-        surveyId: surveyId
+        surveyId,
+        sectionId
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateInput: (surveyId, inputId, value) => dispatch(updateInput(surveyId, inputId, value))
+        updateInput: (surveyId, sectionId, questionIndex, inputId, value) => dispatch(updateInput(surveyId, sectionId, questionIndex, inputId, value))
     }
 }
 

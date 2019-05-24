@@ -14,9 +14,10 @@
                     "area": "ADMINISTRATIVE",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "initialQuestions": [
+                    "questions": [
                         {
                             "title": "Test title for this set",
+                            "notNumbered": true,
                             "inputs": [
                                 {
                                     "id": "4c842aa4-6c25-4fd4-83eb-1d2f3ec10a3b",
@@ -31,9 +32,7 @@
                                     "type": "Q_DATE"
                                 }
                             ]
-                        }
-                    ],
-                    "numberedQuestions": [
+                        },
                         {
                             "inputs": [
                                 {
@@ -89,18 +88,16 @@
                     "area": "ADMINISTRATIVE",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "initialQuestions": [],
-                    "numberedQuestions": []
+                    "questions":[]
                 },
                 {
-                    "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+                    "id": "635c5758-7183-490a-99ac-7fa3de497a3f",
                     "code": "B1",
                     "name": "Fire / Rescue, Chemical / Biological, Life Safety",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "initialQuestions": [],
-                    "numberedQuestions": []
+                    "questions":[]
                 },
                 {
                     "id": "93ab221b-87e2-41b1-96f1-ea63a38dadb5",
@@ -109,8 +106,7 @@
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "initialQuestions": [],
-                    "numberedQuestions": []
+                    "questions":[]
                 },
                 {
                     "id": "b6bfd167-a346-4b3a-8c0e-f14259cd91ee",
@@ -119,8 +115,7 @@
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
                     "lastModification": 1548140514000,
-                    "initialQuestions": [],
-                    "numberedQuestions": []
+                    "questions":[]
                 }
             ]
         }
