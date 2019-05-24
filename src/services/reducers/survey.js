@@ -49,15 +49,17 @@ export function surveyReducer(state = [], action = { type: {}, payload: {} }) {
                 if (survey.id == surveyId) {
                     const newSections = survey.sections.map(s => {
                         if (s.id != sectionId) return s;
-                        const newQuestions = [...s.questions];
-                        const newInputs = newQuestions[questionIndex].inputs.map(input => {
-                            if (input.id != inputId) return input;
-                            return Object.assign({}, input, { value: value });
-                        })
-                        newQuestions[questionIndex].inputs = newInputs;
-                        s.questions = newQuestions;
-                        return s;
-                    });
+                        const sectionClone = JSON.parse(JSON.stringify(s));
+                        const inputs = sectionClone.questions[questionIndex].inputs;
+                        for (let i = 0; i < inputs.length; i++) {
+                            if (inputs[i].id == inputId) {
+                                inputs[i].value = value;
+                                break;
+                            }
+                        }
+                        sectionClone.lastModification = Date.now();
+                        return sectionClone;
+                    })
                     survey.sections = newSections;
                 }
                 result.push(survey);

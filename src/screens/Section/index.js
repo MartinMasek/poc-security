@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { getSectionData } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalStyles';
@@ -25,21 +25,23 @@ export class Section extends React.Component {
     }
 
     _renderQuestion(question, index) {
-        console.log("_renderQuestion()");
         return (
-            <View style={{ marginBottom: 24 }}>
+            <View key={`q_${index}`} style={{ marginBottom: 24 }}>
                 {renderIf(question.title)(
                     <Text style={{ fontSize: fonts.standardFontSize, fontWeight: fonts.semibold }}>{question.title}</Text>
                 )}
                 {question.inputs.map(input => this._renderInput(input, index))}
+                {renderIf(index == this.props.data.questions.length - 1)(
+                    <View style={{ height: 80 }} />
+                )}
             </View>
         )
     }
 
     _renderInput(input, index) {
         switch (input.type) {
-            case Q_TEXT: return <FreeTextInput data={input} questionIndex={index} updateInput={this._updateInput} />
-            case Q_DATE: return <DateInput data={input} questionIndex={index} updateInput={this._updateInput} />
+            case Q_TEXT: return <FreeTextInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
+            case Q_DATE: return <DateInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
             default: return <Text>Unrecognized input type: {input.type}</Text>
         }
     }
@@ -48,18 +50,19 @@ export class Section extends React.Component {
         await this.props.updateInput(this.props.surveyId, this.props.sectionId, questionIndex, inputId, value);
     }
 
-
     render() {
-        console.log("Section render()");
         return (
-            <View style={{ flex: 1 }}>
+            <KeyboardAvoidingView behavior="padding"
+                style={{ flex: 1 }}>
+                <Text style={{ marginBottom: 8, marginHorizontal: STANDARD_HORIZONTAL_MARGIN, color: colors.textSecondaryColor }}>Last modified time:{new Date(this.props.data.lastModification).toLocaleString()}</Text>
                 <FlatList
-                    style={{ paddingTop: 24, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}
+                    style={{ paddingTop: 24, paddingBottom: 70, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}
+                    extraData={this.props.data.lastModification}
                     data={this.props.data.questions}
                     renderItem={({ item, index }) => this._renderQuestion(item, index)}
-                    keyExtractor={(item, index) => index}
+                    keyExtractor={(item, index) => index.toString()}
                 />
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }

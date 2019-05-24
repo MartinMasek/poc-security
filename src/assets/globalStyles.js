@@ -3,6 +3,7 @@ export const colors = {
     primaryColor: "#ECB244",
     buttonLightPressedAreaColor: '#f2f2f2',
     navigationUIColor: "#d1d1d6",
+    textSecondaryColor: "#8e8e93",
 }
 
 export const fonts = {

@@ -12,9 +12,6 @@ export default class FreeTextInput extends React.Component {
 
     _onTextChange(text) {
         // This is user clicking to the form and away without changing anything
-        console.log("New text: " + text);
-        console.log("Saved: " + this.props.data.value);
-        console.log(`${this.props.data.value} == ${text}`);
         if (this.props.data.value == text) return;
         this.props.updateInput(this.props.questionIndex, this.props.data.id, text);
     }

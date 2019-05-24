@@ -24,14 +24,15 @@ export class SurveyList extends React.Component {
     _renderItem(item) {
         return (
             <TouchableHighlight onPress={() => this.props.navigation.navigate(SURVEY_OVERVIEW, { id: item.id, name: item.name })}
-                underlayColor={colors.buttonLightPressedAreaColor}>
-                <View style={{
-                    height: 60, alignItems: 'center', flexDirection: 'row',
-                    paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
-                    borderColor: colors.navigationUIColor,
-                    borderBottomWidth: 1,
-                    borderTopWidth: 1
-                }}>
+                underlayColor={colors.buttonLightPressedAreaColor} key={item.id}>
+                <View key={item.id}
+                    style={{
+                        height: 60, alignItems: 'center', flexDirection: 'row',
+                        paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
+                        borderColor: colors.navigationUIColor,
+                        borderBottomWidth: 1,
+                        borderTopWidth: 1
+                    }}>
                     <Text style={{ fontSize: 17 }}>{item.name}</Text>
                 </View>
             </TouchableHighlight>
@@ -41,7 +42,7 @@ export class SurveyList extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <Text style={{marginHorizontal:STANDARD_HORIZONTAL_MARGIN}}>NOTE: We can directly redirect the user to the survey if they have only 1</Text>
+                <Text style={{ marginHorizontal: STANDARD_HORIZONTAL_MARGIN }}>NOTE: We can directly redirect the user to the survey if they have only 1</Text>
                 <FlatList
                     style={{ paddingTop: 24 }}
                     data={this.props.surveyList}
