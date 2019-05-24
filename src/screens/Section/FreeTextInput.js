@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 import InputTemplate from './InputTemplate';
-import { colors, fonts } from '../../assets/globalStyles';
+import { colors, fonts, INPUT_HEIGHT } from '../../assets/globalStyles';
 
 export default class FreeTextInput extends React.Component {
     constructor(props) {
@@ -13,6 +13,8 @@ export default class FreeTextInput extends React.Component {
     _onTextChange(text) {
         // This is user clicking to the form and away without changing anything
         if (this.props.data.value == text) return;
+        // Empty form and user is just clicking around
+        if (this.props.data.value == null && text=='') return;
         this.props.updateInput(this.props.questionIndex, this.props.data.id, text);
     }
 
@@ -21,7 +23,7 @@ export default class FreeTextInput extends React.Component {
         return (
             <InputTemplate text={data.text}>
                 <TextInput
-                    style={{ height: 34, fontSize: fonts.standardFontSize, borderColor: 'gray', backgroundColor: colors.navigationUIColor, borderWidth: 1 }}
+                    style={{ height: INPUT_HEIGHT, fontSize: fonts.standardFontSize, borderColor: 'gray', backgroundColor: colors.navigationUIColor, borderWidth: 1 }}
                     onChangeText={(text) => this.setState({ text })}
                     value={this.state.text}
                     autoCorrect={false}

@@ -18,3 +18,6 @@ export const fonts = {
 }
 
 export const STANDARD_HORIZONTAL_MARGIN = 12;
+export const INPUT_HEIGHT = 34;
+export const INPUT_TITLE_BOTTOM_MARGIN = 4;
+export const INPUT_TOP_MARGIN = 8;
