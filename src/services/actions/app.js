@@ -1,8 +1,19 @@
 import { setErrorMsg } from "./error";
 import { AsyncStorage } from 'react-native';
 import { LOCAL_STORAGE_KEY } from "../constants";
+import store from "../../../store";
 
 export const LOAD_APP_DATA = "LOAD_APP_DATA"
+
+export const saveAppStateToLocalStorage = async () => {
+    try {
+        const serializedState = JSON.stringify(store.getState());
+        await AsyncStorage.setItem(LOCAL_STORAGE_KEY, serializedState);
+    }
+    catch (error) {
+        alert("Couldn't save app data to the local storage: " + error.toString());
+    }
+}
 
 export const loadAppData = () => {
     return async dispatch => {

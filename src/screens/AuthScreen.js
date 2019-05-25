@@ -6,6 +6,7 @@ import { colors } from '../assets/globalStyles';
 import { MAIN_SCREEN } from '../../navigation/constants';
 import { isUserLogged } from '../services/reducers/profile';
 import { setProfile } from '../services/actions/profile';
+import { saveAppStateToLocalStorage } from '../services/actions/app';
 
 export class AuthScreen extends React.Component {
 
@@ -32,6 +33,7 @@ export class AuthScreen extends React.Component {
     _onLoginSuccess(profileData) {
         this.props.setProfile(profileData);
         this.props.navigation.navigate(MAIN_SCREEN);
+        saveAppStateToLocalStorage();
     }
 
     render() {

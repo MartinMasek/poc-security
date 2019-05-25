@@ -1,4 +1,4 @@
-import { SET_PROFILE } from "../actions/profile";
+import { SET_PROFILE, CLEAR_PROFILE } from "../actions/profile";
 
 const initState = {
     accessToken: null,
@@ -14,6 +14,11 @@ export function profileReducer(state = initState, action = { type: {}, payload: 
     switch (action.type) {
         case SET_PROFILE:
             return Object.assign({}, state, action.payload);
+        case CLEAR_PROFILE:
+            return Object.assign({}, state, {
+                accessToken: null,
+                email: null
+            });
         default:
             return state;
     }
