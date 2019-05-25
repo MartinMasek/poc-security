@@ -13,10 +13,10 @@
                     "name": "Emergency Contacts",
                     "area": "ADMINISTRATIVE",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": [
                         {
-                            "title": "Test title for this set",
                             "notNumbered": true,
                             "inputs": [
                                 {
@@ -146,7 +146,8 @@
                     "name": "Facility Description",
                     "area": "ADMINISTRATIVE",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": [
                         {
                             "title": "Facility",
@@ -224,8 +225,27 @@
                     "name": "Fire / Rescue, Chemical / Biological, Life Safety",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
-                    "questions": []
+                    "lastModification": null,
+                    "completedQuestions": 1,
+                    "questions": [
+                        {
+                            "notNumbered": true,
+                            "inputs": [
+                                {
+                                    "id": "bc57918f-aba4-4c2f-8cb5-43d165d1848a",
+                                    "text": "Office / Building / Facility Name",
+                                    "value": "Test building in NY",
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "05888706-1171-4fa1-b68e-ac479c87757a",
+                                    "text": "Date",
+                                    "value": "2019-05-30",
+                                    "type": "Q_DATE"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "93ab221b-87e2-41b1-96f1-ea63a38dadb5",
@@ -233,8 +253,30 @@
                     "name": "Intrusions / Alarm Systems / Intrusion Detection System (IDS)",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
-                    "questions": []
+                    "lastModification": null,
+                    "completedQuestions": 1,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "f227e5ba-7352-4d67-867e-1a8fa7c70848",
+                                    "text": "Does your facility utilize an intrusion Detection System?",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        },
+                        {
+                            "inputs": [
+                                {
+                                    "id": "f227e5ba-7352-4d67-867e-1a8fa7c70848",
+                                    "text": "Who is the manufacturer of your Alarm System of IDS?",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "b6bfd167-a346-4b3a-8c0e-f14259cd91ee",
@@ -242,7 +284,8 @@
                     "name": "Perimeter Lighting",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": []
                 },
                 {
@@ -251,7 +294,8 @@
                     "name": "Lock and Key Control",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": []
                 },
                 {
@@ -260,7 +304,8 @@
                     "name": "Electronic Screening (Magnetometers / Package Scanners)",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": []
                 },
                 {
@@ -269,7 +314,8 @@
                     "name": "Vehicular Access",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": []
                 },
                 {
@@ -278,7 +324,8 @@
                     "name": "Utility / Cafeteria / Perimeter Protection",
                     "area": "TECHNICAL SECURITY",
                     "lastServerSync": 1548144114000,
-                    "lastModification": 1548140514000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
                     "questions": []
                 }
             ]

@@ -81,6 +81,8 @@ const _extractSectionInfo = (section) => {
         code: section.code,
         name: section.name,
         lastServerSync: section.lastServerSync,
-        lastModification: section.lastModification
+        lastModification: section.lastModification,
+        completedQuestions: section.completedQuestions ? section.completedQuestions : 0,
+        totalQuestions: section.questions.length
     }
 }

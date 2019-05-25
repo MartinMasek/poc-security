@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 import { SECTION_DETAIL } from '../../../navigation/constants';
 import { connect } from 'react-redux';
 import { getSurveySections } from '../../services/reducers/survey';
-import { colors, STANDARD_HORIZONTAL_MARGIN } from '../../assets/globalStyles';
+import { colors, STANDARD_HORIZONTAL_MARGIN, fonts } from '../../assets/globalStyles';
 import { renderIf } from '../../services/api/utils';
 
 export class SurveyOverview extends React.Component {
@@ -37,6 +37,18 @@ export class SurveyOverview extends React.Component {
         );
     }
 
+    _renderProgressText(data) {
+        const completed = data.completedQuestions;
+        const total = data.totalQuestions;
+        if (total == completed) {
+            return (<Text style={{ fontSize: fonts.miniFont, color: "#659D68" }}>Completed</Text>);
+        }
+        if (completed != 0) {
+            return (<Text style={{ fontSize: fonts.miniFont, color: colors.primaryColor }}>In progress {Math.ceil(completed/total*100)}%</Text>);
+        }
+        return (<Text style={{ fontSize: fonts.miniFont, color: 'lightgray' }}>Not started</Text>);
+    }
+
     _renderSections(sections) {
         return sections.map((s, index) => {
             return (
@@ -44,19 +56,29 @@ export class SurveyOverview extends React.Component {
                     { surveyId: this.props.survey.id, sectionId: s.id, name: s.code + " " + s.name })}
                     underlayColor={colors.buttonLightPressedAreaColor}
                     key={s.id}>
-                    <View key={s.id}
-                        style={{
-                            height: 60, alignItems: 'center', flexDirection: 'row',
-                            borderTopWidth: index == 0 ? 1 : 0,
-                            borderLeftWidth: 1, borderRightWidth: 1,
-                            borderBottomWidth: 1, borderColor: colors.navigationUIColor,
-                            paddingHorizontal: 4
-                        }}>
-                        <View style={{ width: 40 }}>
-                            <Text style={{ fontSize: 17 }}>{s.code}</Text>
+                    <View>
+                        <View key={s.id}
+                            style={{
+                                minHeight: 45, alignItems: 'center', flexDirection: 'row',
+                                borderTopWidth: index == 0 ? 1 : 0,
+                                borderLeftWidth: 1, borderRightWidth: 1,
+                                borderColor: colors.navigationUIColor,
+                                paddingVertical: 4
+                            }}>
+                            <View style={{ width: 40, paddingLeft: 4 }}>
+                                <Text style={{ fontSize: 17 }}>{s.code}</Text>
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ fontSize: fonts.standardFontSize }}>{s.name}</Text>
+                            </View>
                         </View>
-                        <View style={{ flex: 1 }}>
-                            <Text style={{ fontSize: 17 }}>{s.name}</Text>
+                        <View style={{
+                            borderBottomWidth: 1,
+                            borderLeftWidth: 1, borderRightWidth: 1,
+                            borderColor: colors.navigationUIColor,
+                            paddingLeft: 40
+                        }}>
+                            {this._renderProgressText(s)}
                         </View>
                     </View>
                 </TouchableHighlight>
