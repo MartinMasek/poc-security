@@ -21,8 +21,8 @@ export class SurveyOverview extends React.Component {
     }
 
     componentDidMount() {
-        this.props.navigation.navigate(SECTION_DETAIL,
-            { surveyId: this.props.survey.id, sectionId: "458b7aec-4494-4f86-b0a1-b8ea79399c2b" });
+        // this.props.navigation.navigate(SECTION_DETAIL,
+        //     { surveyId: this.props.survey.id, sectionId: "458b7aec-4494-4f86-b0a1-b8ea79399c2b" });
     }
 
     _renderArea(item, index) {

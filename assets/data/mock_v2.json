@@ -186,7 +186,15 @@
                                     "id": "a2c6e8a9-f4d7-4208-9f93-046e77f138a6",
                                     "text": "Other (explain)",
                                     "value": null,
-                                    "type": "Q_YES_NO"
+                                    "type": "Q_YES_NO",
+                                    "conditional": true,
+                                    "conditionValue": true,
+                                    "conditionalInput": {
+                                        "id": "ddc5930c-14f3-4c5f-b39b-54925ff140fc",
+                                        "text": "Please explain Other",
+                                        "value": null,
+                                        "type": "Q_TEXT"
+                                    }
                                 }
                             ]
                         },

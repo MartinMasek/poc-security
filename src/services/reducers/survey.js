@@ -56,6 +56,10 @@ export function surveyReducer(state = [], action = { type: {}, payload: {} }) {
                                 inputs[i].value = value;
                                 break;
                             }
+                            if (inputs[i].conditional && inputs[i].conditionalInput.id == inputId) {
+                                inputs[i].conditionalInput.value = value;
+                                break;
+                            }
                         }
                         sectionClone.lastModification = Date.now();
                         return sectionClone;

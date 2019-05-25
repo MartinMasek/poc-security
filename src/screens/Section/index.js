@@ -22,7 +22,6 @@ export class Section extends React.Component {
         super(props);
 
         this._renderQuestion = this._renderQuestion.bind(this);
-        this._renderInput = this._renderInput.bind(this);
         this._updateInput = this._updateInput.bind(this);
     }
 
@@ -32,22 +31,12 @@ export class Section extends React.Component {
                 {renderIf(question.title)(
                     <Text style={{ fontSize: fonts.standardFontSize, fontWeight: fonts.semibold }}>{question.title}</Text>
                 )}
-                {question.inputs.map(input => this._renderInput(input, index))}
+                {question.inputs.map(input => renderInput(input, index, this._updateInput))}
                 {renderIf(index == this.props.data.questions.length - 1)(
                     <View style={{ height: 80 }} />
                 )}
             </View>
         )
-    }
-
-    _renderInput(input, index) {
-        switch (input.type) {
-            case Q_TEXT: return <FreeTextInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
-            case Q_YES_NO: return <YesNoInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
-            case Q_SINGLE_SELECT: return <SingleChoiceInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
-            case Q_DATE: return <DateInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
-            default: return <Text>Unrecognized input type: {input.type}</Text>
-        }
     }
 
     async _updateInput(questionIndex, inputId, value) {
@@ -88,3 +77,13 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Section)
+
+export const renderInput = (input, questionIndex, updateInputFunction) => {
+    switch (input.type) {
+        case Q_TEXT: return <FreeTextInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
+        case Q_YES_NO: return <YesNoInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
+        case Q_SINGLE_SELECT: return <SingleChoiceInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
+        case Q_DATE: return <DateInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
+        default: return <Text>Unrecognized input type: {input.type}</Text>
+    }
+}
