@@ -189,6 +189,24 @@
                                     "type": "Q_YES_NO"
                                 }
                             ]
+                        },
+                        {
+                            "inputs": [
+                                {
+                                    "id": "8bf7b5f3-4792-44e5-b723-a325ec7131ed",
+                                    "text": "Structural Progressive collapse from the loss of a primary column due to a postulated threat (blast loading, earthquake)?",
+                                    "value": null,
+                                    "options": [
+                                        "Very Low",
+                                        "Low",
+                                        "Low-Medium",
+                                        "Medium",
+                                        "Medium-High",
+                                        "High"
+                                    ],
+                                    "type": "Q_SINGLE_SELECT"
+                                }
+                            ]
                         }
                     ]
                 },

@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { getSectionData } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalStyles';
 import { renderIf } from '../../services/api/utils';
-import { Q_TEXT, Q_DATE, Q_YES_NO } from '../../services/constants'
+import { Q_TEXT, Q_DATE, Q_YES_NO, Q_SINGLE_SELECT } from '../../services/constants'
 import FreeTextInput from './FreeTextInput';
 import DateInput from './DateInput';
 import { updateInput } from '../../services/actions/survey';
 import YesNoInput from './YesNoInput';
+import SingleChoiceInput from './SingleChoiceInput';
 
 export class Section extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -43,6 +44,7 @@ export class Section extends React.Component {
         switch (input.type) {
             case Q_TEXT: return <FreeTextInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
             case Q_YES_NO: return <YesNoInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
+            case Q_SINGLE_SELECT: return <SingleChoiceInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
             case Q_DATE: return <DateInput key={input.id} data={input} questionIndex={index} updateInput={this._updateInput} />
             default: return <Text>Unrecognized input type: {input.type}</Text>
         }
