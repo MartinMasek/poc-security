@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { SURVEY_OVERVIEW, SETTINGS } from '../../../navigation/constants';
 import { getSurveyList } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Entypo } from '@expo/vector-icons';
 
 export class SurveyList extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -64,7 +64,12 @@ export class SurveyList extends React.Component {
                         borderBottomWidth: 1,
                         borderTopWidth: 1,
                     }}>
-                    <Text style={{ fontSize: 17 }}>{item.name}</Text>
+                    <View style={{ flex: 1 }}>
+                        <Text style={{ fontSize: 17 }}>{item.name}</Text>
+                    </View>
+                    <View>
+                        <Entypo name="chevron-small-right" size={28} style={{ color: 'gray', marginTop: 5 }} />
+                    </View>
                 </View>
             </TouchableHighlight>
         );
