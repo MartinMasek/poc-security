@@ -16,15 +16,15 @@ export default class ProgressIndicator extends React.Component {
                 <View>
                     <ProgressCircle
                         percent={percent}
-                        radius={13}
-                        borderWidth={5}
-                        color={PRIMARY_COLOR}
+                        radius={this.props.radius ? this.props.radius : 13}
+                        borderWidth={this.props.borderWidth ? this.props.borderWidth : 5}
+                        color={this.props.color ? this.props.color : PRIMARY_COLOR}
                         shadowColor={PRIMARY_COLOR_FADED}
                         bgColor={PROGRESS_BG}
                     >
                     </ProgressCircle>
                 </View>
-            </View>
+            </View >
         );
     }
 }

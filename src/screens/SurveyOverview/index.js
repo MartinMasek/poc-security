@@ -44,7 +44,7 @@ export class SurveyOverview extends React.Component {
         const total = data.totalQuestions;
         let content = null
         if (total == completed) {
-            content = <Ionicons name="md-checkmark-circle" size={30} color="#659D68" />
+            content = <Ionicons name="md-checkmark-circle" size={30} color={colors.successColor} />
         }
         else content =
             <View style={{ alignItems: 'center', marginTop:12 }}>
@@ -74,7 +74,7 @@ export class SurveyOverview extends React.Component {
                             borderLeftWidth: 1, borderRightWidth: 1,
                             borderBottomWidth: 1,
                             borderColor: colors.navigationUIColor,
-                            paddingVertical: 8,
+                            paddingVertical: 4,
                             paddingHorizontal: 4
                         }}>
                         <View style={{ width: 40, paddingLeft: 4 }}>

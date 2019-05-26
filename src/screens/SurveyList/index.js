@@ -48,7 +48,7 @@ export class SurveyList extends React.Component {
     }
 
     componentDidMount() {
-        this.props.navigation.navigate(SURVEY_OVERVIEW, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
+        // this.props.navigation.navigate(SURVEY_OVERVIEW, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
         // this.props.navigation.navigate(SETTINGS, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
     }
 

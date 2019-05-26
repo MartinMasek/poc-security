@@ -5,6 +5,7 @@ export const colors = {
     buttonLightPressedAreaColor: '#f2f2f2',
     navigationUIColor: "#d1d1d6",
     textSecondaryColor: "#8e8e93",
+    successColor: "#659D68"
 }
 
 export const fonts = {

@@ -10,11 +10,17 @@ import DateInput from './DateInput';
 import { updateInput } from '../../services/actions/survey';
 import YesNoInput from './YesNoInput';
 import SingleChoiceInput from './SingleChoiceInput';
+import SectionProgress from './SectionProgress';
 
 export class Section extends React.Component {
     static navigationOptions = ({ navigation }) => {
+        const surveyId = navigation.getParam('surveyId', null);
+        const sectionId = navigation.getParam('sectionId', null);
         return {
-            title: navigation.getParam('name', "Survey")
+            title: navigation.getParam('name', "Survey"),
+            headerRight: (
+                <SectionProgress surveyId={surveyId} sectionId={sectionId} />
+            ),
         }
     };
 

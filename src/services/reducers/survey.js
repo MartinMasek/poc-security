@@ -36,6 +36,8 @@ export const getSectionData = (state, surveyId, sectionId) => {
     const surveyData = state.surveys.find(s => s.id == surveyId);
     if (surveyData == null || surveyData == undefined || isObjectEmpty(surveyData)) return {};
     const sectionData = surveyData.sections.find(s => s.id == sectionId);
+    sectionData.completedQuestions = computeCompletedQuestions(sectionData.questions);
+    sectionData.totalQuestions = sectionData.questions.length;
     return sectionData;
 }
 
