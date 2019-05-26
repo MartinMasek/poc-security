@@ -37,9 +37,12 @@ export default class DateInput extends React.Component {
                             backgroundColor: colors.navigationUIColor,
                             borderColor: 'gray',
                             color: 'black',
-                            fontSize: fonts.standardFontSize,
                             borderRadius: 5,
-                            paddingLeft: 4
+                            paddingLeft: 4,
+                        },
+                        dateText: {
+                            fontSize: fonts.standardFontSize,
+                            color: 'black'
                         },
                         btnTextConfirm: {
                             color: colors.primaryColor,
