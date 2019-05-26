@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableHighlight } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { SECTION_DETAIL } from '../../../navigation/constants';
 import { connect } from 'react-redux';
 import { getSurveySections } from '../../services/reducers/survey';
 import { colors, STANDARD_HORIZONTAL_MARGIN, fonts } from '../../assets/globalStyles';
 import { renderIf } from '../../services/api/utils';
+import ProgressIndicator from '../shared/ProgressIndicator';
 
 export class SurveyOverview extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -40,13 +42,22 @@ export class SurveyOverview extends React.Component {
     _renderProgressText(data) {
         const completed = data.completedQuestions;
         const total = data.totalQuestions;
+        let content = null
         if (total == completed) {
-            return (<Text style={{ fontSize: fonts.miniFont, color: "#659D68" }}>Completed</Text>);
+            content = <Ionicons name="md-checkmark-circle" size={30} color="#659D68" />
         }
-        if (completed != 0) {
-            return (<Text style={{ fontSize: fonts.miniFont, color: colors.primaryColor }}>In progress {Math.ceil(completed/total*100)}%</Text>);
-        }
-        return (<Text style={{ fontSize: fonts.miniFont, color: 'lightgray' }}>Not started</Text>);
+        else content =
+            <View style={{ alignItems: 'center', marginTop:12 }}>
+                <ProgressIndicator percent={Math.ceil(completed / total * 100)} />
+                <Text style={{ color: 'gray', marginTop:4, fontSize:fonts.miniFont }}>
+                    {Math.ceil(completed / total * 100)}%
+                </Text>
+            </View>
+        return (
+            <View style={{ width: 40, alignItems: 'center', justifyContent: 'center' }}>
+                {content}
+            </View>
+        );
     }
 
     _renderSections(sections) {
@@ -56,28 +67,23 @@ export class SurveyOverview extends React.Component {
                     { surveyId: this.props.survey.id, sectionId: s.id, name: s.code + " " + s.name })}
                     underlayColor={colors.buttonLightPressedAreaColor}
                     key={s.id}>
-                    <View>
-                        <View key={s.id}
-                            style={{
-                                minHeight: 45, alignItems: 'center', flexDirection: 'row',
-                                borderTopWidth: index == 0 ? 1 : 0,
-                                borderLeftWidth: 1, borderRightWidth: 1,
-                                borderColor: colors.navigationUIColor,
-                                paddingVertical: 4
-                            }}>
-                            <View style={{ width: 40, paddingLeft: 4 }}>
-                                <Text style={{ fontSize: 17 }}>{s.code}</Text>
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                <Text style={{ fontSize: fonts.standardFontSize }}>{s.name}</Text>
-                            </View>
-                        </View>
-                        <View style={{
-                            borderBottomWidth: 1,
+                    <View key={s.id}
+                        style={{
+                            minHeight: 70, alignItems: 'center', flexDirection: 'row',
+                            borderTopWidth: index == 0 ? 1 : 0,
                             borderLeftWidth: 1, borderRightWidth: 1,
+                            borderBottomWidth: 1,
                             borderColor: colors.navigationUIColor,
-                            paddingLeft: 40
+                            paddingVertical: 8,
+                            paddingHorizontal: 4
                         }}>
+                        <View style={{ width: 40, paddingLeft: 4 }}>
+                            <Text style={{ fontSize: 17 }}>{s.code}</Text>
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ fontSize: fonts.standardFontSize }}>{s.name}</Text>
+                        </View>
+                        <View>
                             {this._renderProgressText(s)}
                         </View>
                     </View>

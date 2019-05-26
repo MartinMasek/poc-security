@@ -82,7 +82,33 @@ const _extractSectionInfo = (section) => {
         name: section.name,
         lastServerSync: section.lastServerSync,
         lastModification: section.lastModification,
-        completedQuestions: section.completedQuestions ? section.completedQuestions : 0,
+        completedQuestions: computeCompletedQuestions(section.questions),//section.completedQuestions ? section.completedQuestions : 0,
         totalQuestions: section.questions.length
     }
+}
+
+const computeCompletedQuestions = (questions) => {
+    if (!questions) return 0;
+    let completed = 0;
+    for (let i = 0; i < questions.length; i++) {
+        const q = questions[i];
+        if (areAllInputsFilled(q.inputs)) completed++;
+    }
+    return completed;
+}
+
+const areAllInputsFilled = (inputs) => {
+    return inputs.every(i => {
+        if (i.value === null || i.value === '' || i.value === undefined) {
+            if (i.optional) return true;
+            return false;
+        }
+        if (i.conditional && i.conditionValue === i.value) {
+            if (i.conditionalInput.value === null || i.conditionalInput.value === '' || i.conditionalInput.value === undefined) {
+                if (i.conditionalInput.optional) return true;
+                return false;
+            }
+        }
+        return true;
+    })
 }

@@ -48,7 +48,7 @@ export class Section extends React.Component {
             <KeyboardAvoidingView behavior="padding"
                 style={{ flex: 1 }}>
                 {renderIf(this.props.data.lastModification)(
-                    <Text style={{ marginBottom: 8, marginHorizontal: STANDARD_HORIZONTAL_MARGIN, color: colors.textSecondaryColor }}>Last modified time:{new Date(this.props.data.lastModification).toLocaleString()}</Text>
+                    <Text style={{ marginBottom: 8, marginHorizontal: STANDARD_HORIZONTAL_MARGIN, color: colors.textSecondaryColor }}>Last modified time: {new Date(this.props.data.lastModification).toLocaleString()}</Text>
                 )}
                 <FlatList
                     style={{ paddingTop: 24, paddingHorizontal: STANDARD_HORIZONTAL_MARGIN }}

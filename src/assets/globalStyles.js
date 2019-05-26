@@ -1,6 +1,7 @@
 export const colors = {
     // primaryColor: "#F4E087",
-    primaryColor: "#ECB244",
+    primaryColor: "#F4A818",
+    primaryColorFaded: "#FEDC9B",
     buttonLightPressedAreaColor: '#f2f2f2',
     navigationUIColor: "#d1d1d6",
     textSecondaryColor: "#8e8e93",

@@ -51,8 +51,7 @@ export class Settings extends React.Component {
                     <View
                         style={{
                             height: 44, alignItems: 'center', justifyContent: 'center',
-                            borderColor: colors.navigationUIColor,
-                            borderWidth: 1,
+                            borderRadius: 5,
                             backgroundColor: colors.primaryColor,
                             marginHorizontal: STANDARD_HORIZONTAL_MARGIN
                         }}>
@@ -67,8 +66,7 @@ export class Settings extends React.Component {
                     <View
                         style={{
                             height: 44, alignItems: 'center', justifyContent: 'center',
-                            borderColor: colors.navigationUIColor,
-                            borderWidth: 1,
+                            borderRadius: 5,
                             marginTop: 24,
                             backgroundColor: colors.primaryColor,
                             marginHorizontal: STANDARD_HORIZONTAL_MARGIN
@@ -93,7 +91,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         clearProfileData: () => dispatch(clearProfileData()),
-        loadAppData:()=>dispatch(loadAppData())
+        loadAppData: () => dispatch(loadAppData())
     }
 }
 

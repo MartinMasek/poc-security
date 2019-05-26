@@ -286,7 +286,18 @@
                     "lastServerSync": 1548144114000,
                     "lastModification": null,
                     "completedQuestions": 0,
-                    "questions": []
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "05867e23-19c1-4e56-be76-8a356119ba6e",
+                                    "text": "What types of perimeter lights are used?",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "7a0836a4-31d5-4819-be23-119db3c508a5",
@@ -296,7 +307,18 @@
                     "lastServerSync": 1548144114000,
                     "lastModification": null,
                     "completedQuestions": 0,
-                    "questions": []
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "c5d763eb-bb26-45c0-8ad4-a8d32cc2758b",
+                                    "text": "Are the lock and keys used in your building controlled?",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "da98e7d1-db59-47b0-825e-2f0adcdec1b2",
@@ -306,7 +328,18 @@
                     "lastServerSync": 1548144114000,
                     "lastModification": null,
                     "completedQuestions": 0,
-                    "questions": []
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "4e29a8e9-b428-4546-a14e-f94bcda093cf",
+                                    "text": "Does your building utilize magnetometers/x-ray machines at all public entrances?",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "59bed4da-dcc3-4c88-bba0-491a01332272",
@@ -316,7 +349,18 @@
                     "lastServerSync": 1548144114000,
                     "lastModification": null,
                     "completedQuestions": 0,
-                    "questions": []
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "2fbf2220-bcef-41df-8a1d-1a3cefc5766c",
+                                    "text": "Underground Parking?",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "0a8be068-1dc3-42ae-9f82-4f93fd60d5dd",
@@ -326,7 +370,26 @@
                     "lastServerSync": 1548144114000,
                     "lastModification": null,
                     "completedQuestions": 0,
-                    "questions": []
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "6b47838f-766d-418d-8d96-5dff2cb80920",
+                                    "text": "Does your building have any exterior propane or other fuel tanks?",
+                                    "value": null,
+                                    "type": "Q_YES_NO",
+                                    "conditional": true,
+                                    "conditionValue": true,
+                                    "conditionalInput": {
+                                        "id": "ca760a95-b883-49c0-b685-3be341908368",
+                                        "text": "Are they protected from the general public?",
+                                        "value": null,
+                                        "type": "Q_YES_NO"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
