@@ -47,9 +47,9 @@ export class SurveyOverview extends React.Component {
             content = <Ionicons name="md-checkmark-circle" size={30} color={colors.successColor} />
         }
         else content =
-            <View style={{ alignItems: 'center', marginTop:12 }}>
+            <View style={{ alignItems: 'center', marginTop: 12 }}>
                 <ProgressIndicator percent={Math.ceil(completed / total * 100)} />
-                <Text style={{ color: 'gray', marginTop:4, fontSize:fonts.miniFont }}>
+                <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
                     {Math.ceil(completed / total * 100)}%
                 </Text>
             </View>

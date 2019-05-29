@@ -37,7 +37,6 @@ export class AuthScreen extends React.Component {
                     `https://login.microsoftonline.com/${TENANT_ID}/oauth2/authorize?client_id=${CLIENT_ID}`
                     + `&redirect_uri=${encodeURIComponent(AUTH_URL)}&response_type=code`,
             });
-            console.log(result);
             // User dismisses the web view
             if (result && result.type && result.type === "cancel") return;
             // User cancelled the popup

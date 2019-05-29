@@ -19,7 +19,7 @@ export default class ProgressIndicator extends React.Component {
                         radius={this.props.radius ? this.props.radius : 13}
                         borderWidth={this.props.borderWidth ? this.props.borderWidth : 5}
                         color={this.props.color ? this.props.color : PRIMARY_COLOR}
-                        shadowColor={PRIMARY_COLOR_FADED}
+                        shadowColor={colors.navigationUIColor}
                         bgColor={PROGRESS_BG}
                     >
                     </ProgressCircle>

@@ -3,7 +3,7 @@ import { UPDATE_INPUT } from "../actions/survey";
 
 export const getSurveyList = (state) => {
     if (!state.surveys) return [];
-    return (state.surveys);
+    return (state.surveys.map(s => { return { id: s.id, name: s.name } }));
 }
 
 export const getSurveySections = (state, surveyId) => {
