@@ -9,6 +9,7 @@ import { LOGOUT_SCREEN } from '../../../navigation/constants';
 import { loadAppData } from '../../services/actions/app';
 import BigButton from '../shared/BigButton';
 import { getProfileFromToken } from '../../services/reducers/profile';
+import { clearLocalStorage } from '../../services/api/LocalStorage';
 
 export class Settings extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -34,7 +35,7 @@ export class Settings extends React.Component {
             <View style={{ flex: 1 }}>
                 <View style={{
                     paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
-                    paddingBottom:8,
+                    paddingBottom: 8,
                     marginBottom: 24,
                     borderBottomWidth: 1,
                     borderColor: colors.navigationUIColor
@@ -60,6 +61,17 @@ export class Settings extends React.Component {
                     onPress={async () => { this.props.navigation.navigate(LOGOUT_SCREEN); }}
                     style={{ marginTop: 24 }}
                     title="Logout"
+                />
+
+                <BigButton
+                    onPress={async () => {
+                        try { await clearLocalStorage() }
+                        catch (error) {
+                            alert(error);
+                        }
+                    }}
+                    style={{ marginTop: 24 }}
+                    title="Clear local storage"
                 />
 
                 {renderIf(this.state.resetingData)(
