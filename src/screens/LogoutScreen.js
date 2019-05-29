@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { clearProfileData } from '../services/actions/profile';
 import { colors } from '../assets/globalStyles';
 import { MAIN_SCREEN } from '../../navigation/constants';
-import { saveAppStateToLocalStorage } from '../services/actions/app';
+import { persistStateToLocalStorage } from '../services/api/LocalStorage';
 
 export class LogoutScreen extends React.Component {
 
@@ -42,7 +42,7 @@ export class LogoutScreen extends React.Component {
 
         // Success
         this.props.clearProfileData();
-        await saveAppStateToLocalStorage();
+        await persistStateToLocalStorage();
         this.props.navigation.navigate(MAIN_SCREEN);
     }
 

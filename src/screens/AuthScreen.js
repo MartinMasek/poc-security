@@ -7,9 +7,9 @@ import { colors, fonts, STANDARD_HORIZONTAL_MARGIN } from '../assets/globalStyle
 import { MAIN_SCREEN, LOGOUT_SCREEN } from '../../navigation/constants';
 import { isUserLogged } from '../services/reducers/profile';
 import { setProfile } from '../services/actions/profile';
-import { saveAppStateToLocalStorage } from '../services/actions/app';
 import BigButton from './shared/BigButton';
 import { renderIf } from '../services/api/utils';
+import { persistStateToLocalStorage } from '../services/api/LocalStorage';
 
 const AVAILABLE_WIDTH = Dimensions.get('window').width - 2 * STANDARD_HORIZONTAL_MARGIN;
 
@@ -64,7 +64,7 @@ export class AuthScreen extends React.Component {
     _onLoginSuccess(profileData) {
         this.props.setProfile(profileData);
         this.props.navigation.navigate(MAIN_SCREEN);
-        saveAppStateToLocalStorage();
+        persistStateToLocalStorage();
     }
 
     render() {

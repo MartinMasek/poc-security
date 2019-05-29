@@ -5,8 +5,8 @@ import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalSt
 import { LOCAL_STORAGE_KEY } from '../../services/constants';
 import { renderIf } from '../../services/api/utils';
 import { clearProfileData } from '../../services/actions/profile';
-import { AUTH_SCREEN, LOGOUT_SCREEN } from '../../../navigation/constants';
-import { saveAppStateToLocalStorage, loadAppData } from '../../services/actions/app';
+import { LOGOUT_SCREEN } from '../../../navigation/constants';
+import { loadAppData } from '../../services/actions/app';
 import BigButton from '../shared/BigButton';
 import { getProfileFromToken } from '../../services/reducers/profile';
 
@@ -27,12 +27,6 @@ export class Settings extends React.Component {
         await AsyncStorage.removeItem(LOCAL_STORAGE_KEY);
         await AsyncStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(require("../../../assets/data/mock_v2.json")));
         await this.props.loadAppData();
-    }
-
-    async _onLogout() {
-        this.props.clearProfileData();
-        await saveAppStateToLocalStorage();
-        this.props.navigation.navigate(AUTH_SCREEN)
     }
 
     render() {
@@ -63,7 +57,7 @@ export class Settings extends React.Component {
                 />
 
                 <BigButton
-                    onPress={async () => { this.props.navigation.navigate(LOGOUT_SCREEN); }}//await this._onLogout(); }}
+                    onPress={async () => { this.props.navigation.navigate(LOGOUT_SCREEN); }}
                     style={{ marginTop: 24 }}
                     title="Logout"
                 />
