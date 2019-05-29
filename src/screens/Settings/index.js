@@ -7,6 +7,7 @@ import { renderIf } from '../../services/api/utils';
 import { clearProfileData } from '../../services/actions/profile';
 import { AUTH_SCREEN } from '../../../navigation/constants';
 import { saveAppStateToLocalStorage, loadAppData } from '../../services/actions/app';
+import BigButton from '../shared/BigButton';
 
 export class Settings extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -36,44 +37,26 @@ export class Settings extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, paddingTop: 24 }}>
-                <TouchableHighlight onPress={async () => {
-                    try {
-                        this.setState({ resetingData: true });
-                        await this._resetData();
-                        this.setState({ resetingData: false });
-                    }
-                    catch (e) {
-                        this.setState({ resetingData: false })
-                        alert(e)
-                    }
-                }}
-                    underlayColor={colors.buttonLightPressedAreaColor}>
-                    <View
-                        style={{
-                            height: 44, alignItems: 'center', justifyContent: 'center',
-                            borderRadius: 5,
-                            backgroundColor: colors.primaryColor,
-                            marginHorizontal: STANDARD_HORIZONTAL_MARGIN
-                        }}>
-                        <Text style={{ fontSize: 18, color: 'white', fontWeight: '500' }}>Reset data</Text>
-                    </View>
-                </TouchableHighlight>
+                <BigButton
+                    onPress={async () => {
+                        try {
+                            this.setState({ resetingData: true });
+                            await this._resetData();
+                            this.setState({ resetingData: false });
+                        }
+                        catch (e) {
+                            this.setState({ resetingData: false })
+                            alert(e)
+                        }
+                    }}
+                    title="Reset data"
+                />
 
-                <TouchableHighlight onPress={async () => {
-                    await this._onLogout();
-                }}
-                    underlayColor={colors.buttonLightPressedAreaColor}>
-                    <View
-                        style={{
-                            height: 44, alignItems: 'center', justifyContent: 'center',
-                            borderRadius: 5,
-                            marginTop: 24,
-                            backgroundColor: colors.primaryColor,
-                            marginHorizontal: STANDARD_HORIZONTAL_MARGIN
-                        }}>
-                        <Text style={{ fontSize: 18, color: 'white', fontWeight: '500' }}>Logout</Text>
-                    </View>
-                </TouchableHighlight>
+                <BigButton
+                    onPress={async () => { await this._onLogout(); }}
+                    style={{ marginTop: 24 }}
+                    title="Logout"
+                />
 
                 {renderIf(this.state.resetingData)(
                     <Text style={{ marginBottom: 8 }}>Reseting . . .</Text>

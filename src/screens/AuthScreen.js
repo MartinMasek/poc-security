@@ -21,12 +21,15 @@ export class AuthScreen extends React.Component {
         console.log(redirectUrl);
         let result = await AuthSession.startAsync({
             authUrl:
-                `https://login.microsoftonline.com/6b5bebd1-2726-4f17-8aed-3d3ffb415c54/oauth2/authorize?client_id=31fc597b-5bfb-4301-ae76-c91c14a63793`
-                + `&redirect_uri=${encodeURIComponent(redirectUrl)}&response_type=code`,
-            // authUrl:
-            // "https://login.microsoftonline.com/logout.srf"
+                `https://login.microsoftonline.com/3926f5f4-ca60-46de-b9f8-72639d55232d/oauth2/authorize?client_id=909caae4-5065-438a-afb3-afd01c2ff8dc`
+                + `&redirect_uri=${encodeURIComponent("https://pocsecurity1234.azurewebsites.net/auth")}&response_type=code`,
+                // `https://login.microsoftonline.com/3926f5f4-ca60-46de-b9f8-72639d55232d/oauth2/authorize?client_id=909caae4-5065-438a-afb3-afd01c2ff8dc`
+                // + `&redirect_uri=${encodeURIComponent("http://localhost:3001")}&response_type=code`,
+                // "https://login.microsoftonline.com/logout.srf"
         });
         console.log(result);
+        const authCode = result.params.code;
+        console.log(authCode);
         this.setState({ result });
     };
 
@@ -44,12 +47,6 @@ export class AuthScreen extends React.Component {
         //             <Text>{JSON.stringify(this.state.result)}</Text>
         //         ) : null}
         //     </View>
-        // );
-        // return (
-        //     <WebView
-        //         source={{ uri: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910' }}
-        //         style={{ marginTop: 20 }}
-        //     />
         // );
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
