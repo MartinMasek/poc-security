@@ -5,7 +5,7 @@ import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
 import { LOCAL_STORAGE_KEY } from '../../services/constants';
 import { renderIf } from '../../services/api/utils';
 import { clearProfileData } from '../../services/actions/profile';
-import { AUTH_SCREEN } from '../../../navigation/constants';
+import { AUTH_SCREEN, LOGOUT_SCREEN } from '../../../navigation/constants';
 import { saveAppStateToLocalStorage, loadAppData } from '../../services/actions/app';
 import BigButton from '../shared/BigButton';
 
@@ -53,7 +53,7 @@ export class Settings extends React.Component {
                 />
 
                 <BigButton
-                    onPress={async () => { await this._onLogout(); }}
+                    onPress={async () => { this.props.navigation.navigate(LOGOUT_SCREEN); }}//await this._onLogout(); }}
                     style={{ marginTop: 24 }}
                     title="Logout"
                 />

@@ -13,9 +13,10 @@ export const fonts = {
     bold: "bold",
     standardFontSize: 17,
     headerFontSize: 17,
-    mediumTitleSize: 28,
+    mediumTitleSize: 22,
     smallerFont: 15,
     miniFont: 13,
+    buttonFontSize: 18,
     largeFontSize: 34
 }
 

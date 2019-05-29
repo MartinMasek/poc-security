@@ -4,12 +4,13 @@ import { TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'
 import MainScreen from '../src/screens/MainScreen';
 import AuthScreen from '../src/screens/AuthScreen';
-import { AUTH_SCREEN, MAIN_SCREEN, SURVEY_LIST, SURVEY_OVERVIEW, SECTION_DETAIL, APP_SCREEN, SETTINGS } from './constants';
+import { AUTH_SCREEN, MAIN_SCREEN, SURVEY_LIST, SURVEY_OVERVIEW, SECTION_DETAIL, APP_SCREEN, SETTINGS, LOGOUT_SCREEN } from './constants';
 import SurveyList from '../src/screens/SurveyList';
 import SurveyOverview from '../src/screens/SurveyOverview';
 import Section from '../src/screens/Section';
 import { STANDARD_HORIZONTAL_MARGIN, fonts, colors } from '../src/assets/globalStyles';
 import Settings from '../src/screens/Settings';
+import LogoutScreen from '../src/screens/LogoutScreen';
 
 const AppStack = createStackNavigator({
   [SURVEY_LIST]: SurveyList,
@@ -63,6 +64,7 @@ export default createAppContainer(createSwitchNavigator({
   [APP_SCREEN]: AppStack,
   [AUTH_SCREEN]: AuthScreen,
   [MAIN_SCREEN]: MainScreen,
+  [LOGOUT_SCREEN]: LogoutScreen
 },
   {
     initialRouteName: MAIN_SCREEN

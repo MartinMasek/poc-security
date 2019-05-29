@@ -1,8 +1,7 @@
 import { SET_PROFILE, CLEAR_PROFILE } from "../actions/profile";
 
 const initState = {
-    accessToken: null,
-    email: null
+    accessToken: null
 }
 
 export const isUserLogged = (state) => {
@@ -16,8 +15,7 @@ export function profileReducer(state = initState, action = { type: {}, payload: 
             return Object.assign({}, state, action.payload);
         case CLEAR_PROFILE:
             return Object.assign({}, state, {
-                accessToken: null,
-                email: null
+                accessToken: null
             });
         default:
             return state;

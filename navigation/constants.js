@@ -1,6 +1,7 @@
 export const AUTH_SCREEN = "AUTH_SCREEN"
 export const APP_SCREEN = "APP_SCREEN"
 export const MAIN_SCREEN = "MAIN_SCREEN"
+export const LOGOUT_SCREEN = "LOGOUT_SCREEN"
 
 export const SURVEY_LIST = "SURVEY_LIST"
 export const SURVEY_OVERVIEW = "SURVEY_OVERVIEW"
