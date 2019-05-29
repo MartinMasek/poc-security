@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { clearProfileData } from '../services/actions/profile';
 import { colors } from '../assets/globalStyles';
 import { MAIN_SCREEN } from '../../navigation/constants';
-import { persistStateToLocalStorage } from '../services/api/LocalStorage';
+import { persistAppStateToLocalStorage } from '../services/api/LocalStorage';
 
 export class LogoutScreen extends React.Component {
 
@@ -26,7 +26,6 @@ export class LogoutScreen extends React.Component {
         //         "https://login.microsoftonline.com/logout.srf"
         // });
         const result = await WebBrowser.openAuthSessionAsync("https://login.microsoftonline.com/logout.srf");
-        console.log(result);
 
         // The sections below are when using AuthSession but using WebBrowser to clear data is 
         // a slightly better experience
@@ -42,7 +41,7 @@ export class LogoutScreen extends React.Component {
 
         // Success
         this.props.clearProfileData();
-        await persistStateToLocalStorage();
+        await persistAppStateToLocalStorage();
         this.props.navigation.navigate(MAIN_SCREEN);
     }
 

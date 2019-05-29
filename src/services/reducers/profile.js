@@ -9,10 +9,16 @@ const initState = {
 export const getProfileFromToken = (state) => {
     const token = state.profile.accessToken;
     if (!token) return {};
-    const result = decode(token);
-    return {
-        email: result.upn,
-        name: result.name
+    try {
+        const result = decode(token);
+        return {
+            email: result.upn,
+            name: result.name
+        }
+    }
+    catch (error) {
+        alert("Couldn't decode token");
+        return {}
     }
 }
 

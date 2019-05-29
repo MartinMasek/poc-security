@@ -1,5 +1,5 @@
 import { Network } from '../api/Network';
-import { persistStateToLocalStorage } from '../api/LocalStorage';
+import { saveSectionDataById } from '../api/LocalStorage';
 
 export const UPDATE_INPUT = "UPDATE_INPUT"
 
@@ -45,7 +45,8 @@ export const updateInput = (surveyId, sectionId, questionIndex, inputId, value) 
                 payload: { surveyId, sectionId, questionIndex, inputId, value }
             })
             console.debug("Storing to local device store");
-            await persistStateToLocalStorage();
+            await saveSectionDataById(surveyId, sectionId);
+            // await persistAppStateToLocalStorage();
             console.debug("[Finished] Storing to local device store");
         }
         catch (error) {

@@ -9,7 +9,7 @@ import { isUserLogged } from '../services/reducers/profile';
 import { saveAccessTokenAsync } from '../services/actions/profile';
 import BigButton from './shared/BigButton';
 import { renderIf } from '../services/api/utils';
-import { persistStateToLocalStorage } from '../services/api/LocalStorage';
+import { persistAppStateToLocalStorage } from '../services/api/LocalStorage';
 
 const AVAILABLE_WIDTH = Dimensions.get('window').width - 2 * STANDARD_HORIZONTAL_MARGIN;
 
@@ -54,8 +54,6 @@ export class AuthScreen extends React.Component {
             const token = result.params.token;
             await this.props.saveAccessTokenAsync(token);
             this.props.navigation.navigate(MAIN_SCREEN);
-            // TODO: remove below after proper storage implementation
-            persistStateToLocalStorage();
         }
         catch (error) {
             this.setState({ isError: true, errorMsg: error.toString() })
