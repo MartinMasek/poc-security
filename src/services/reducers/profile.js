@@ -1,7 +1,19 @@
+import decode from 'jwt-decode'
+
 import { SET_PROFILE, CLEAR_PROFILE } from "../actions/profile";
 
 const initState = {
     accessToken: null
+}
+
+export const getProfileFromToken = (state) => {
+    const token = state.profile.accessToken;
+    if (!token) return {};
+    const result = decode(token);
+    return {
+        email: result.upn,
+        name: result.name
+    }
 }
 
 export const isUserLogged = (state) => {

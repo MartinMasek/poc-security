@@ -78,7 +78,6 @@ export class SurveyList extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <Text style={{ marginHorizontal: STANDARD_HORIZONTAL_MARGIN }}>NOTE: We can directly redirect the user to the survey if they have only 1</Text>
                 <FlatList
                     style={{ paddingTop: 24 }}
                     data={this.props.surveyList}

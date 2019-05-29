@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
-import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
+import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalStyles';
 import { LOCAL_STORAGE_KEY } from '../../services/constants';
 import { renderIf } from '../../services/api/utils';
 import { clearProfileData } from '../../services/actions/profile';
 import { AUTH_SCREEN, LOGOUT_SCREEN } from '../../../navigation/constants';
 import { saveAppStateToLocalStorage, loadAppData } from '../../services/actions/app';
 import BigButton from '../shared/BigButton';
+import { getProfileFromToken } from '../../services/reducers/profile';
 
 export class Settings extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -36,7 +37,16 @@ export class Settings extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: 24 }}>
+            <View style={{ flex: 1 }}>
+                <View style={{
+                    paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
+                    paddingBottom:8,
+                    marginBottom: 24,
+                    borderBottomWidth: 1,
+                    borderColor: colors.navigationUIColor
+                }}>
+                    <Text style={{ fontSize: fonts.standardFontSize }}>{this.props.userProfile.name}</Text>
+                </View>
                 <BigButton
                     onPress={async () => {
                         try {
@@ -68,6 +78,7 @@ export class Settings extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        userProfile: getProfileFromToken(state)
     }
 }
 
