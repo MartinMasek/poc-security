@@ -6,7 +6,7 @@ import { AuthSession } from 'expo';
 import { colors, fonts, STANDARD_HORIZONTAL_MARGIN } from '../assets/globalStyles';
 import { MAIN_SCREEN, LOGOUT_SCREEN } from '../../navigation/constants';
 import { isUserLogged } from '../services/reducers/profile';
-import { setProfile } from '../services/actions/profile';
+import { saveAccessTokenAsync } from '../services/actions/profile';
 import BigButton from './shared/BigButton';
 import { renderIf } from '../services/api/utils';
 import { persistStateToLocalStorage } from '../services/api/LocalStorage';
@@ -52,20 +52,15 @@ export class AuthScreen extends React.Component {
             }
             // Success
             const token = result.params.token;
-            this._onLoginSuccess({
-                accessToken: token
-            });
+            await this.props.saveAccessTokenAsync(token);
+            this.props.navigation.navigate(MAIN_SCREEN);
+            // TODO: remove below after proper storage implementation
+            persistStateToLocalStorage();
         }
         catch (error) {
             this.setState({ isError: true, errorMsg: error.toString() })
         }
     };
-
-    _onLoginSuccess(profileData) {
-        this.props.setProfile(profileData);
-        this.props.navigation.navigate(MAIN_SCREEN);
-        persistStateToLocalStorage();
-    }
 
     render() {
         return (
@@ -102,7 +97,7 @@ export class AuthScreen extends React.Component {
                             {renderIf(this.state.isError)(
                                 <Text
                                     style={{ fontSize: fonts.buttonFontSiz, textDecorationLine: 'underline' }}
-                                    onPress={()=>this.props.navigation.navigate(LOGOUT_SCREEN)}
+                                    onPress={() => this.props.navigation.navigate(LOGOUT_SCREEN)}
                                 >Delete cookies</Text>
                             )}
                         </View>
@@ -141,7 +136,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setProfile: (profileData) => dispatch(setProfile(profileData)),
+        saveAccessTokenAsync: (token) => dispatch(saveAccessTokenAsync(token))
     }
 }
 

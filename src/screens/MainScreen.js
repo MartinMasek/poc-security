@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, ActivityIndicator, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { setProfile } from '../services/actions/profile';
 import { isUserLogged } from '../services/reducers/profile';
 import { loadAppData } from '../services/actions/app';
 import { colors } from '../assets/globalStyles';
@@ -73,7 +72,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setProfile: (profileData) => dispatch(setProfile(profileData)),
         loadAppData: () => dispatch(loadAppData())
     }
 }
