@@ -9,7 +9,7 @@ import { LOGOUT_SCREEN } from '../../../navigation/constants';
 import { loadAppData } from '../../services/actions/app';
 import BigButton from '../shared/BigButton';
 import { getProfileFromToken } from '../../services/reducers/profile';
-import { clearLocalStorage } from '../../services/api/LocalStorage';
+import { clearLocalStorage, persistAppStateToLocalStorage } from '../../services/api/LocalStorage';
 
 export class Settings extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -51,6 +51,17 @@ export class Settings extends React.Component {
                     }}
                     style={{ marginTop: 24 }}
                     title="Clear local storage"
+                />
+
+                <BigButton
+                    onPress={async () => {
+                        try { await persistAppStateToLocalStorage() }
+                        catch (error) {
+                            alert(error);
+                        }
+                    }}
+                    style={{ marginTop: 24 }}
+                    title="Persist current state"
                 />
 
                 {renderIf(this.state.resetingData)(
