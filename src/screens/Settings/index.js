@@ -24,12 +24,6 @@ export class Settings extends React.Component {
         this.state = { resetingData: false };
     }
 
-    async _resetData() {
-        await AsyncStorage.removeItem(LOCAL_STORAGE_KEY);
-        await AsyncStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(require("../../../assets/data/mock_v2.json")));
-        await this.props.loadAppData();
-    }
-
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -42,24 +36,9 @@ export class Settings extends React.Component {
                 }}>
                     <Text style={{ fontSize: fonts.standardFontSize }}>{this.props.userProfile.name}</Text>
                 </View>
-                <BigButton
-                    onPress={async () => {
-                        try {
-                            this.setState({ resetingData: true });
-                            await this._resetData();
-                            this.setState({ resetingData: false });
-                        }
-                        catch (e) {
-                            this.setState({ resetingData: false })
-                            alert(e)
-                        }
-                    }}
-                    title="Reset data"
-                />
 
                 <BigButton
                     onPress={async () => { this.props.navigation.navigate(LOGOUT_SCREEN); }}
-                    style={{ marginTop: 24 }}
                     title="Logout"
                 />
 

@@ -1,5 +1,5 @@
 import { isObjectEmpty } from "../api/utils";
-import { UPDATE_INPUT } from "../actions/survey";
+import { UPDATE_INPUT, REFRESH_SURVEY_LIST } from "../actions/survey";
 
 export const getSurveyList = (state) => {
     if (!state.surveys) return [];
@@ -45,32 +45,10 @@ export function surveyReducer(state = [], action = { type: {}, payload: {} }) {
     switch (action.type) {
         case UPDATE_INPUT: {
             const { surveyId, sectionId, questionIndex, inputId, value } = action.payload;
-            let result = [];
-            for (let i = 0; i < state.length; i++) {
-                let survey = Object.assign({}, state[i]);
-                if (survey.id == surveyId) {
-                    const newSections = survey.sections.map(s => {
-                        if (s.id != sectionId) return s;
-                        const sectionClone = JSON.parse(JSON.stringify(s));
-                        const inputs = sectionClone.questions[questionIndex].inputs;
-                        for (let i = 0; i < inputs.length; i++) {
-                            if (inputs[i].id == inputId) {
-                                inputs[i].value = value;
-                                break;
-                            }
-                            if (inputs[i].conditional && inputs[i].conditionalInput.id == inputId) {
-                                inputs[i].conditionalInput.value = value;
-                                break;
-                            }
-                        }
-                        sectionClone.lastModification = Date.now();
-                        return sectionClone;
-                    })
-                    survey.sections = newSections;
-                }
-                result.push(survey);
-            }
-            return result;
+            return _handleUpdateInput(state, surveyId, sectionId, questionIndex, inputId, value);
+        }
+        case REFRESH_SURVEY_LIST: {
+            return _handleRefreshSurveyList(state, action.payload);
         }
         default:
             return state;
@@ -87,6 +65,50 @@ const _extractSectionInfo = (section) => {
         completedQuestions: computeCompletedQuestions(section.questions),//section.completedQuestions ? section.completedQuestions : 0,
         totalQuestions: section.questions.length
     }
+}
+
+const _handleUpdateInput = (state, surveyId, sectionId, questionIndex, inputId, value) => {
+    let result = [];
+    for (let i = 0; i < state.length; i++) {
+        let survey = Object.assign({}, state[i]);
+        if (survey.id == surveyId) {
+            const newSections = survey.sections.map(s => {
+                if (s.id != sectionId) return s;
+                const sectionClone = JSON.parse(JSON.stringify(s));
+                const inputs = sectionClone.questions[questionIndex].inputs;
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].id == inputId) {
+                        inputs[i].value = value;
+                        break;
+                    }
+                    if (inputs[i].conditional && inputs[i].conditionalInput.id == inputId) {
+                        inputs[i].conditionalInput.value = value;
+                        break;
+                    }
+                }
+                sectionClone.lastModification = Date.now();
+                return sectionClone;
+            })
+            survey.sections = newSections;
+        }
+        result.push(survey);
+    }
+    return result;
+}
+
+const _handleRefreshSurveyList = (state, newList) => {
+    // We assume lists to be very short so this O(n2) algorithm is good enough
+    for (let i = 0; i < newList.length; i++) {
+        const newOne = newList[i];
+        for (let j = 0; j < state.length; j++) {
+            const old = state[j];
+            if (old.id == newOne.id) {
+                // merge the current section data if there is any
+                newList[i] = Object.assign(old, newOne);
+            }
+        }
+    }
+    return newList;
 }
 
 const computeCompletedQuestions = (questions) => {

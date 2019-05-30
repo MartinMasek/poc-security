@@ -3,6 +3,7 @@ import { saveSectionDataById } from '../api/LocalStorage';
 import { setErrorMsg } from './error';
 
 export const UPDATE_INPUT = "UPDATE_INPUT"
+export const REFRESH_SURVEY_LIST = "REFRESH_SURVEY_LIST"
 
 export const fetchSurveySections = (surveyId, network = Network) => {
     return async dispatch => {
@@ -26,10 +27,16 @@ export const fetchSurveys = (network = Network) => {
             const isDeviceOffline = await network.isDeviceOfflineAsync();
             if (isDeviceOffline) return;
             // Simulate contacting the server
-            await new Promise((res, rej) => {
-                setTimeout(() => res("S"), 2000);
+            const data = await new Promise((res, rej) => {
+                setTimeout(() => res([{
+                    "id": "1",
+                    "name": "Survey for Demo building 1"
+                }]), 800);
             });
-            // Now we should set the sections
+            dispatch({
+                type: REFRESH_SURVEY_LIST,
+                payload: data
+            });
         }
         catch (error) {
             console.log("ERROR:");
