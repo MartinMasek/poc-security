@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableHighlight } from 'react-native';
+import { View, Text, FlatList, TouchableHighlight, ActivityIndicator, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import { SURVEY_OVERVIEW, SETTINGS } from '../../../navigation/constants';
 import { getSurveyList } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
 import { Ionicons, Entypo } from '@expo/vector-icons';
+import { fetchSurveys } from '../../services/actions/survey';
 
 export class SurveyList extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -45,11 +46,26 @@ export class SurveyList extends React.Component {
     constructor(props) {
         super(props);
         this._renderItem = this._renderItem.bind(this);
+        this._fetchSurveys = this._fetchSurveys.bind(this);
+
+        this.state = { fetchingSurveys: false };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         // this.props.navigation.navigate(SURVEY_OVERVIEW, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
         // this.props.navigation.navigate(SETTINGS, { id: "c63d7d11-734c-4a3f-a480-cde8d867209c" })
+        await this._fetchSurveys();
+    }
+
+    async _fetchSurveys() {
+        try {
+            this.setState({ fetchingSurveys: true })
+            await this.props.fetchSurveys();
+            this.setState({ fetchingSurveys: false })
+        }
+        catch (error) {
+            alert(error);
+        }
     }
 
     _renderItem(item) {
@@ -83,6 +99,15 @@ export class SurveyList extends React.Component {
                     data={this.props.surveyList}
                     renderItem={({ item }) => this._renderItem(item)}
                     keyExtractor={(item) => item.id}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.fetchingSurveys}
+                            onRefresh={this._fetchSurveys}
+                            tintColor={colors.primaryColor}
+                            titleColor={colors.primaryColor}
+                            colors={[colors.primaryColor]}
+                        />
+                    }
                 />
             </View>
         );
@@ -97,6 +122,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        fetchSurveys: () => dispatch(fetchSurveys())
     }
 }
 

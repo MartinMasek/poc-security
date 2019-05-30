@@ -1,5 +1,6 @@
 import { Network } from '../api/Network';
 import { saveSectionDataById } from '../api/LocalStorage';
+import { setErrorMsg } from './error';
 
 export const UPDATE_INPUT = "UPDATE_INPUT"
 
@@ -22,14 +23,17 @@ export const fetchSurveySections = (surveyId, network = Network) => {
 export const fetchSurveys = (network = Network) => {
     return async dispatch => {
         try {
+            const isDeviceOffline = await network.isDeviceOfflineAsync();
+            if (isDeviceOffline) return;
             // Simulate contacting the server
             await new Promise((res, rej) => {
-                setTimeout(() => res("S"), 1000);
-            })
-
+                setTimeout(() => res("S"), 2000);
+            });
             // Now we should set the sections
         }
         catch (error) {
+            console.log("ERROR:");
+            console.log(error);
             dispatch(setErrorMsg(error ? error.toString() : "Unknown fetch section error - empty"));
         }
     }
