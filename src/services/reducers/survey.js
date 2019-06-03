@@ -1,5 +1,6 @@
 import { isObjectEmpty } from "../api/utils";
 import { UPDATE_INPUT, REFRESH_SURVEY_LIST } from "../actions/survey";
+import { Q_MULTI_SELECT } from "../constants";
 
 export const getSurveyList = (state) => {
     if (!state.surveys) return [];
@@ -125,6 +126,7 @@ const areAllInputsFilled = (inputs) => {
     return inputs.every(i => {
         if (i.value === null || i.value === '' || i.value === undefined) {
             if (i.optional) return true;
+            if (i.type === Q_MULTI_SELECT) return true;
             return false;
         }
         if (i.conditional && i.conditionValue === i.value) {

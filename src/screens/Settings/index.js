@@ -5,7 +5,7 @@ import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalSt
 import { LOCAL_STORAGE_KEY } from '../../services/constants';
 import { renderIf } from '../../services/api/utils';
 import { clearProfileData } from '../../services/actions/profile';
-import { LOGOUT_SCREEN } from '../../../navigation/constants';
+import { LOGOUT_SCREEN, MAIN_SCREEN } from '../../../navigation/constants';
 import { loadAppData } from '../../services/actions/app';
 import BigButton from '../shared/BigButton';
 import { getProfileFromToken } from '../../services/reducers/profile';
@@ -53,7 +53,7 @@ export class Settings extends React.Component {
                     title="Clear local storage"
                 />
 
-                <BigButton
+                {/* <BigButton
                     onPress={async () => {
                         try { await persistAppStateToLocalStorage() }
                         catch (error) {
@@ -62,7 +62,7 @@ export class Settings extends React.Component {
                     }}
                     style={{ marginTop: 24 }}
                     title="Persist current state"
-                />
+                /> */}
 
                 {renderIf(this.state.resetingData)(
                     <Text style={{ marginBottom: 8 }}>Reseting . . .</Text>

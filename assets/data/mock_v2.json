@@ -150,7 +150,6 @@
                     "questions": [
                         {
                             "title": "Facility",
-                            "notNumbered": true,
                             "inputs": [
                                 {
                                     "id": "c9257b12-b89e-4860-93b2-6dc67d6a10a8",
@@ -213,6 +212,23 @@
                                         "High"
                                     ],
                                     "type": "Q_SINGLE_SELECT"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "3 LCS Emergency Information Line",
+                            "inputs": [
+                                {
+                                    "id": "9afb5c63-6fc7-43de-945c-d8fcfa3391ea",
+                                    "text": "Check all options which are true.",
+                                    "value": null,
+                                    "type": "Q_MULTI_SELECT",
+                                    "options": [
+                                        "Building has more than 1 door",
+                                        "More than 5 rooms",
+                                        "More than 1 elevator",
+                                        "Heating throug gass"
+                                    ]
                                 }
                             ]
                         }

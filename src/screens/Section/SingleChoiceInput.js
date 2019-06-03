@@ -17,6 +17,7 @@ export default class SingleChoiceInput extends React.Component {
     }
 
     _renderOptions(options) {
+        if(!options) return null;
         return options.map((o, index) => {
             return (
                 <TouchableWithoutFeedback onPress={() => this._onPress(index)}>

@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { getSectionData } from '../../services/reducers/survey';
 import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalStyles';
 import { renderIf } from '../../services/api/utils';
-import { Q_TEXT, Q_DATE, Q_YES_NO, Q_SINGLE_SELECT } from '../../services/constants'
+import { Q_TEXT, Q_DATE, Q_YES_NO, Q_SINGLE_SELECT, Q_MULTI_SELECT } from '../../services/constants'
 import FreeTextInput from './FreeTextInput';
 import DateInput from './DateInput';
 import { updateInput } from '../../services/actions/survey';
 import YesNoInput from './YesNoInput';
 import SingleChoiceInput from './SingleChoiceInput';
 import SectionProgress from './SectionProgress';
+import Multiselect from './Multiselect';
 
 export class Section extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -91,6 +92,7 @@ export const renderInput = (input, questionIndex, updateInputFunction) => {
         case Q_TEXT: return <FreeTextInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
         case Q_YES_NO: return <YesNoInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
         case Q_SINGLE_SELECT: return <SingleChoiceInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
+        case Q_MULTI_SELECT: return <Multiselect key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
         case Q_DATE: return <DateInput key={input.id} data={input} questionIndex={questionIndex} updateInput={updateInputFunction} />
         default: return <Text>Unrecognized input type: {input.type}</Text>
     }
