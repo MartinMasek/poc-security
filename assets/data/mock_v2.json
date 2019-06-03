@@ -4,6 +4,7 @@
         {
             "id": "1",
             "name": "Survey for Demo building 1",
+            "progress": 20,
             "isError": false,
             "errorMsg": null,
             "sections": [

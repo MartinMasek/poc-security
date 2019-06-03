@@ -1,6 +1,5 @@
-import { isObjectEmpty } from "../api/utils";
+import { isObjectEmpty, computeTotalProgressOfSurvey, computeCompletedQuestions } from "../api/utils";
 import { UPDATE_INPUT, REFRESH_SURVEY_LIST } from "../actions/survey";
-import { Q_MULTI_SELECT } from "../constants";
 
 export const getSurveyList = (state) => {
     if (!state.surveys) return [];
@@ -8,7 +7,7 @@ export const getSurveyList = (state) => {
         return {
             id: s.id,
             name: s.name,
-            progress: 0
+            progress: s.progress
         }
     }));
 }
@@ -99,6 +98,7 @@ const _handleUpdateInput = (state, surveyId, sectionId, questionIndex, inputId, 
             })
             survey.sections = newSections;
         }
+        survey.progress = computeTotalProgressOfSurvey(survey.sections);
         result.push(survey);
     }
     return result;
@@ -117,31 +117,4 @@ const _handleRefreshSurveyList = (state, newList) => {
         }
     }
     return newList;
-}
-
-const computeCompletedQuestions = (questions) => {
-    if (!questions) return 0;
-    let completed = 0;
-    for (let i = 0; i < questions.length; i++) {
-        const q = questions[i];
-        if (areAllInputsFilled(q.inputs)) completed++;
-    }
-    return completed;
-}
-
-const areAllInputsFilled = (inputs) => {
-    return inputs.every(i => {
-        if (i.value === null || i.value === '' || i.value === undefined) {
-            if (i.optional) return true;
-            if (i.type === Q_MULTI_SELECT) return true;
-            return false;
-        }
-        if (i.conditional && i.conditionValue === i.value) {
-            if (i.conditionalInput.value === null || i.conditionalInput.value === '' || i.conditionalInput.value === undefined) {
-                if (i.conditionalInput.optional) return true;
-                return false;
-            }
-        }
-        return true;
-    })
 }

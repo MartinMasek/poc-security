@@ -3,9 +3,10 @@ import { View, Text, FlatList, TouchableHighlight, ActivityIndicator, RefreshCon
 import { connect } from 'react-redux';
 import { SURVEY_OVERVIEW, SETTINGS } from '../../../navigation/constants';
 import { getSurveyList } from '../../services/reducers/survey';
-import { STANDARD_HORIZONTAL_MARGIN, colors } from '../../assets/globalStyles';
+import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalStyles';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import { fetchSurveys } from '../../services/actions/survey';
+import ProgressIndicator from '../shared/ProgressIndicator';
 
 export class SurveyList extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -74,14 +75,20 @@ export class SurveyList extends React.Component {
                 underlayColor={colors.buttonLightPressedAreaColor} key={item.id}>
                 <View key={item.id}
                     style={{
-                        height: 60, alignItems: 'center', flexDirection: 'row',
-                        paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
+                        height: 70, alignItems: 'center', flexDirection: 'row',
+                        paddingLeft: STANDARD_HORIZONTAL_MARGIN,
                         borderColor: colors.navigationUIColor,
                         borderBottomWidth: 1,
                         borderTopWidth: 1,
                     }}>
                     <View style={{ flex: 1 }}>
                         <Text style={{ fontSize: 17 }}>{item.name}</Text>
+                    </View>
+                    <View style={{ alignItems: 'center', marginTop: 12, width:50 }}>
+                        <ProgressIndicator percent={item.progress} />
+                        <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
+                            {item.progress}%
+                        </Text>
                     </View>
                     <View>
                         <Entypo name="chevron-small-right" size={28} style={{ color: 'gray', marginTop: 5 }} />

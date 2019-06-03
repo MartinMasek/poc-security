@@ -31,13 +31,15 @@ export const fetchSurveys = (network = Network) => {
                 setTimeout(() => res([{
                     "id": "1",
                     "name": "Survey for Demo building 1",
-                    "progress": 100,
+                    "progress": 20,
                 }]), 800);
             });
-            dispatch({
-                type: REFRESH_SURVEY_LIST,
-                payload: data
-            });
+            // TODO: remove once data fetched from server
+            // Progress may be less fresh and maybe we need to compute it
+            // dispatch({
+            //     type: REFRESH_SURVEY_LIST,
+            //     payload: data
+            // });
         }
         catch (error) {
             console.log("ERROR:");
@@ -62,6 +64,8 @@ export const updateInput = (surveyId, sectionId, questionIndex, inputId, value) 
             console.debug("[Finished] Storing to local device store");
         }
         catch (error) {
+            console.log(">> ERROR:");
+            console.log(error);
             dispatch(setErrorMsg(error ? error.toString() : "Unknown error - empty"));
         }
     }

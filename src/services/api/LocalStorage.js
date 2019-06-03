@@ -1,5 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import store from '../../../store'
+import { computeTotalProgressOfSurvey } from './utils';
 
 const ACCESS_TOKEN_KEY = "ACCESS_TOKEN"
 const SURVEY_LIST_KEY = "SURVEY_LIST_KEY"
@@ -53,6 +54,7 @@ export const getPersistedAppState = async () => {
             const data = await getSectionData(survey.id, sectionId);
             survey.sections.push(data);
         }
+        survey.progress = computeTotalProgressOfSurvey(survey.sections);
         result.surveys.push(survey);
     }
 
