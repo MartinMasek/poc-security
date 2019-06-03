@@ -7,6 +7,7 @@ import { STANDARD_HORIZONTAL_MARGIN, colors, fonts } from '../../assets/globalSt
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import { fetchSurveys } from '../../services/actions/survey';
 import ProgressIndicator from '../shared/ProgressIndicator';
+import AvatarImage from './AvatarImage';
 
 export class SurveyList extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -75,23 +76,41 @@ export class SurveyList extends React.Component {
                 underlayColor={colors.buttonLightPressedAreaColor} key={item.id}>
                 <View key={item.id}
                     style={{
-                        height: 70, alignItems: 'center', flexDirection: 'row',
-                        paddingLeft: STANDARD_HORIZONTAL_MARGIN,
+                        paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
+                        paddingVertical: 8,
                         borderColor: colors.navigationUIColor,
                         borderBottomWidth: 1,
                         borderTopWidth: 1,
+                        alignItems: 'center',
+                        flexDirection: 'row'
                     }}>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: 17 }}>{item.name}</Text>
-                    </View>
-                    <View style={{ alignItems: 'center', marginTop: 12, width:50 }}>
-                        <ProgressIndicator percent={item.progress} />
-                        <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
-                            {item.progress}%
-                        </Text>
+                        <View
+                            style={{
+                                marginBottom: 12,
+                            }}>
+                            <Text style={{ fontSize: 17 }}>{item.name}</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ alignItems: 'center', marginTop: 4, width: 120 }}>
+                                <ProgressIndicator percent={item.progress} radius={31} borderWidth={13} />
+                                <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
+                                    {item.progress}% completed
+                                </Text>
+                            </View>
+                            <View style={{ marginTop: 0, width: 120, marginLeft: 24 }}>
+                                <Text style={{ color: 'gray', fontSize: fonts.miniFont, marginBottom: 4 }}>Assigned to:</Text>
+                                <View style={{ marginLeft: 12 }}>
+                                    <AvatarImage imageUri="../../../assets/images/rachel.png" />
+                                </View>
+                                <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
+                                    Rachel Davis
+                                </Text>
+                            </View>
+                        </View>
                     </View>
                     <View>
-                        <Entypo name="chevron-small-right" size={28} style={{ color: 'gray', marginTop: 5 }} />
+                        <Entypo name="chevron-small-right" size={32} style={{ color: 'gray', marginTop: 5 }} />
                     </View>
                 </View>
             </TouchableHighlight>
