@@ -30,7 +30,8 @@ export const fetchSurveys = (network = Network) => {
             const data = await new Promise((res, rej) => {
                 setTimeout(() => res([{
                     "id": "1",
-                    "name": "Survey for Demo building 1"
+                    "name": "Survey for Demo building 1",
+                    "progress": 100,
                 }]), 800);
             });
             dispatch({

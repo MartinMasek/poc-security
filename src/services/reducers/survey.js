@@ -4,7 +4,13 @@ import { Q_MULTI_SELECT } from "../constants";
 
 export const getSurveyList = (state) => {
     if (!state.surveys) return [];
-    return (state.surveys.map(s => { return { id: s.id, name: s.name } }));
+    return (state.surveys.map(s => {
+        return {
+            id: s.id,
+            name: s.name,
+            progress: 0
+        }
+    }));
 }
 
 export const getSurveySections = (state, surveyId) => {
@@ -37,7 +43,7 @@ export const getSectionData = (state, surveyId, sectionId) => {
     const surveyData = state.surveys.find(s => s.id == surveyId);
     if (surveyData == null || surveyData == undefined || isObjectEmpty(surveyData)) return {};
     const sectionData = surveyData.sections.find(s => s.id == sectionId);
-    sectionData.completedQuestions = computeCompletedQuestions(sectionData.questions);
+    sectionData.completedQuestions = sectionData.completedQuestions;
     sectionData.totalQuestions = sectionData.questions.length;
     return sectionData;
 }
@@ -63,7 +69,7 @@ const _extractSectionInfo = (section) => {
         name: section.name,
         lastServerSync: section.lastServerSync,
         lastModification: section.lastModification,
-        completedQuestions: computeCompletedQuestions(section.questions),//section.completedQuestions ? section.completedQuestions : 0,
+        completedQuestions: (section.completedQuestions !== undefined || section.completedQuestions != null) ? section.completedQuestions : 0,
         totalQuestions: section.questions.length
     }
 }
@@ -88,6 +94,7 @@ const _handleUpdateInput = (state, surveyId, sectionId, questionIndex, inputId, 
                     }
                 }
                 sectionClone.lastModification = Date.now();
+                sectionClone.completedQuestions = computeCompletedQuestions(sectionClone.questions);
                 return sectionClone;
             })
             survey.sections = newSections;

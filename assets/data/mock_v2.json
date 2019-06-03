@@ -146,7 +146,7 @@
                     "area": "ADMINISTRATIVE",
                     "lastServerSync": 1548144114000,
                     "lastModification": null,
-                    "completedQuestions": 0,
+                    "completedQuestions": 1,
                     "questions": [
                         {
                             "title": "Facility",
