@@ -8,6 +8,7 @@ import { Ionicons, Entypo } from '@expo/vector-icons';
 import { fetchSurveys } from '../../services/actions/survey';
 import ProgressIndicator from '../shared/ProgressIndicator';
 import AvatarImage from './AvatarImage';
+import { renderIf } from '../../services/api/utils';
 
 export class SurveyList extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -73,7 +74,8 @@ export class SurveyList extends React.Component {
     _renderItem(item) {
         return (
             <TouchableHighlight onPress={() => this.props.navigation.navigate(SURVEY_OVERVIEW, { id: item.id, name: item.name })}
-                underlayColor={colors.buttonLightPressedAreaColor} key={item.id}>
+                underlayColor={colors.buttonLightPressedAreaColor} key={item.id}
+                style={{ marginBottom: 48 }}>
                 <View key={item.id}
                     style={{
                         paddingHorizontal: STANDARD_HORIZONTAL_MARGIN,
@@ -93,20 +95,44 @@ export class SurveyList extends React.Component {
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                             <View style={{ alignItems: 'center', marginTop: 4, width: 120 }}>
-                                <ProgressIndicator percent={item.progress} radius={31} borderWidth={13} />
+                                <ProgressIndicator percent={item.progress} radius={31} borderWidth={13} color={item.progress == 100 ? colors.successColor : undefined} />
                                 <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
                                     {item.progress}% completed
                                 </Text>
                             </View>
-                            <View style={{ marginTop: 0, width: 120, marginLeft: 24 }}>
-                                <Text style={{ color: 'gray', fontSize: fonts.miniFont, marginBottom: 4 }}>Assigned to:</Text>
-                                <View style={{ marginLeft: 12 }}>
-                                    <AvatarImage imageUri="../../../assets/images/rachel.png" />
+                            {renderIf(item.id == 1)(
+                                <View style={{ marginTop: 0, width: 120, marginLeft: 24 }}>
+                                    <Text style={{ color: 'gray', fontSize: fonts.miniFont, marginBottom: 4 }}>Assigned to:</Text>
+                                    <View style={{ marginLeft: 12 }}>
+                                        <AvatarImage id={1} imageUri="../../../assets/images/rachel.png" />
+                                    </View>
+                                    <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
+                                        Rachel Davis
+                                    </Text>
                                 </View>
-                                <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
-                                    Rachel Davis
-                                </Text>
-                            </View>
+                            )}
+                            {renderIf(item.id == 2)(
+                                <View style={{ marginTop: 0, width: 120, marginLeft: 24 }}>
+                                    <Text style={{ color: 'gray', fontSize: fonts.miniFont, marginBottom: 4 }}>Assigned to:</Text>
+                                    <View style={{ marginLeft: 12 }}>
+                                        <AvatarImage id={2} imageUri="../../../assets/images/rachel.png" />
+                                    </View>
+                                    <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
+                                        Sharat Karra
+                                    </Text>
+                                </View>
+                            )}
+                            {renderIf(item.id == 3)(
+                                <View style={{ marginTop: 0, width: 120, marginLeft: 24 }}>
+                                    <Text style={{ color: 'gray', fontSize: fonts.miniFont, marginBottom: 4 }}>Assigned to:</Text>
+                                    <View style={{ marginLeft: 12 }}>
+                                        <AvatarImage id={3} imageUri="../../../assets/images/rachel.png" />
+                                    </View>
+                                    <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
+                                        Sharat Karra
+                                    </Text>
+                                </View>
+                            )}
                         </View>
                     </View>
                     <View>

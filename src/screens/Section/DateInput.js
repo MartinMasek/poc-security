@@ -12,7 +12,6 @@ export default class DateInput extends React.Component {
 
     _onDateChange(date) {
         this.props.updateInput(this.props.questionIndex, this.props.data.id, date);
-
     }
 
     render() {

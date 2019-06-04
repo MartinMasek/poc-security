@@ -408,6 +408,450 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "2",
+            "name": "Another building 2",
+            "progress": 100,
+            "isError": false,
+            "errorMsg": null,
+            "sections": [
+                {
+                    "id": "383f538b-2fdd-488a-bd52-7f8f6cbd238c",
+                    "code": "A1",
+                    "name": "Emergency Contacts",
+                    "area": "ADMINISTRATIVE",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 1,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "c386072b-39f1-4717-a209-fc2fd66d70bb",
+                                    "text": "Office / Building / Facility Name",
+                                    "value": "Test facility",
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "242c5d9f-f8f6-413a-af4c-a4b223f99aee",
+                                    "text": "Date",
+                                    "value": "2019-06-04",
+                                    "type": "Q_DATE"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Yet another building 3",
+            "progress": 34,
+            "isError": false,
+            "errorMsg": null,
+            "sections": [
+                {
+                    "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+                    "code": "A1",
+                    "name": "Emergency Contacts",
+                    "area": "ADMINISTRATIVE",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "4c842aa4-6c25-4fd4-83eb-1d2f3ec10a3b",
+                                    "text": "Office / Building / Facility Name",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "93893156-fce7-4215-b856-63e4580850ee",
+                                    "text": "Date",
+                                    "value": null,
+                                    "type": "Q_DATE"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "1",
+                            "inputs": [
+                                {
+                                    "id": "dca8a7cb-17e9-4e6c-9d35-52ce5ae61463",
+                                    "text": "Building Property Manager",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "57af89fc-4ccf-4a7e-91c8-ef10dd4bba6b",
+                                    "text": "Mailing Address",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "3fa22179-073b-4235-95e7-0d73dafc7daf",
+                                    "text": "City",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "9de35bd4-0d6c-490a-92e3-09102d3f8465",
+                                    "text": "State",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "03a01038-cd9e-4e70-81c1-ee9a13b20ca7",
+                                    "text": "Zip Code",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "61eee8a6-7c5d-4c2e-99de-040259d0c3b8",
+                                    "text": "Daytime Telephone Numbers",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "eb160d55-c113-4dce-b881-7f6767f12053",
+                                    "text": "After hours & weekends",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "2 ALCS Point(s) of contact for property management",
+                            "inputs": [
+                                {
+                                    "id": "30b62927-129d-4228-8ecb-d1756582c4dd",
+                                    "text": "Building Manager",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "02f249f9-6d9d-4d3b-9b81-c82313063853",
+                                    "text": "Mailing Address",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "16261d7c-a7ec-4c8a-ab8c-303375991099",
+                                    "text": "City",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "4ee80c03-a003-442f-8d93-d088eb4a6d5d",
+                                    "text": "State",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "574b9e68-5344-479d-b460-ce893accc0ee",
+                                    "text": "Zip Code",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "44c6bc3e-0a30-4c1c-92cb-7f297edfe50d",
+                                    "text": "Daytime Telephone Numbers",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "4d96c79a-6233-42ba-82b7-d91893676c3d",
+                                    "text": "After hours & weekends",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "3 LCS Emergency Information Line",
+                            "inputs": [
+                                {
+                                    "id": "fee761cc-4100-46a7-92f4-3f54b2d8d862",
+                                    "text": "",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "458b7aec-4494-4f86-b0a1-b8ea79399c2b",
+                    "code": "A2",
+                    "name": "Facility Description",
+                    "area": "ADMINISTRATIVE",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": 1559661086000,
+                    "completedQuestions": 3,
+                    "questions": [
+                        {
+                            "title": "Facility",
+                            "inputs": [
+                                {
+                                    "id": "c9257b12-b89e-4860-93b2-6dc67d6a10a8",
+                                    "text": "Leased Multi-Tenant ALCS Building",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "247c3e93-29a0-4128-993f-6fbb3f61fac7",
+                                    "text": "Leased Single-Tenant ALCS Building",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "5a9ce29c-1070-44cb-abdb-9c336ccb51b2",
+                                    "text": "Altria Building",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "3a036369-512e-40c7-bebf-71a15a61050f",
+                                    "text": "PM USA Building",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "c3d89661-9402-4188-b077-1f1d30f21b0b",
+                                    "text": "John Middleton Building",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                },
+                                {
+                                    "id": "a2c6e8a9-f4d7-4208-9f93-046e77f138a6",
+                                    "text": "Other (explain)",
+                                    "value": false,
+                                    "type": "Q_YES_NO",
+                                    "conditional": true,
+                                    "conditionValue": true,
+                                    "conditionalInput": {
+                                        "id": "ddc5930c-14f3-4c5f-b39b-54925ff140fc",
+                                        "text": "Please explain Other",
+                                        "value": null,
+                                        "type": "Q_TEXT"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "inputs": [
+                                {
+                                    "id": "8bf7b5f3-4792-44e5-b723-a325ec7131ed",
+                                    "text": "Structural Progressive collapse from the loss of a primary column due to a postulated threat (blast loading, earthquake)?",
+                                    "value": "Low",
+                                    "options": [
+                                        "Very Low",
+                                        "Low",
+                                        "Low-Medium",
+                                        "Medium",
+                                        "Medium-High",
+                                        "High"
+                                    ],
+                                    "type": "Q_SINGLE_SELECT"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "3 LCS Emergency Information Line",
+                            "inputs": [
+                                {
+                                    "id": "9afb5c63-6fc7-43de-945c-d8fcfa3391ea",
+                                    "text": "Check all options which are true.",
+                                    "value": null,
+                                    "type": "Q_MULTI_SELECT",
+                                    "options": [
+                                        "Building has more than 1 door",
+                                        "More than 5 rooms",
+                                        "More than 1 elevator",
+                                        "Heating throug gass"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "635c5758-7183-490a-99ac-7fa3de497a3f",
+                    "code": "B1",
+                    "name": "Fire / Rescue, Chemical / Biological, Life Safety",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 1,
+                    "questions": [
+                        {
+                            "notNumbered": true,
+                            "inputs": [
+                                {
+                                    "id": "bc57918f-aba4-4c2f-8cb5-43d165d1848a",
+                                    "text": "Office / Building / Facility Name",
+                                    "value": "Test building in NY",
+                                    "type": "Q_TEXT"
+                                },
+                                {
+                                    "id": "05888706-1171-4fa1-b68e-ac479c87757a",
+                                    "text": "Date",
+                                    "value": "2019-05-30",
+                                    "type": "Q_DATE"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "93ab221b-87e2-41b1-96f1-ea63a38dadb5",
+                    "code": "B2",
+                    "name": "Intrusions / Alarm Systems / Intrusion Detection System (IDS)",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 1,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "f227e5ba-7352-4d67-867e-1a8fa7c70848",
+                                    "text": "Does your facility utilize an intrusion Detection System?",
+                                    "value": true,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        },
+                        {
+                            "inputs": [
+                                {
+                                    "id": "f227e5ba-7352-4d67-867e-1a8fa7c70848",
+                                    "text": "Who is the manufacturer of your Alarm System of IDS?",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "b6bfd167-a346-4b3a-8c0e-f14259cd91ee",
+                    "code": "B4",
+                    "name": "Perimeter Lighting",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "05867e23-19c1-4e56-be76-8a356119ba6e",
+                                    "text": "What types of perimeter lights are used?",
+                                    "value": null,
+                                    "type": "Q_TEXT"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "7a0836a4-31d5-4819-be23-119db3c508a5",
+                    "code": "B8",
+                    "name": "Lock and Key Control",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "c5d763eb-bb26-45c0-8ad4-a8d32cc2758b",
+                                    "text": "Are the lock and keys used in your building controlled?",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "da98e7d1-db59-47b0-825e-2f0adcdec1b2",
+                    "code": "B9",
+                    "name": "Electronic Screening (Magnetometers / Package Scanners)",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "4e29a8e9-b428-4546-a14e-f94bcda093cf",
+                                    "text": "Does your building utilize magnetometers/x-ray machines at all public entrances?",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "59bed4da-dcc3-4c88-bba0-491a01332272",
+                    "code": "B10",
+                    "name": "Vehicular Access",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "2fbf2220-bcef-41df-8a1d-1a3cefc5766c",
+                                    "text": "Underground Parking?",
+                                    "value": null,
+                                    "type": "Q_YES_NO"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "0a8be068-1dc3-42ae-9f82-4f93fd60d5dd",
+                    "code": "B12",
+                    "name": "Utility / Cafeteria / Perimeter Protection",
+                    "area": "TECHNICAL SECURITY",
+                    "lastServerSync": 1548144114000,
+                    "lastModification": null,
+                    "completedQuestions": 0,
+                    "questions": [
+                        {
+                            "inputs": [
+                                {
+                                    "id": "6b47838f-766d-418d-8d96-5dff2cb80920",
+                                    "text": "Does your building have any exterior propane or other fuel tanks?",
+                                    "value": null,
+                                    "type": "Q_YES_NO",
+                                    "conditional": true,
+                                    "conditionValue": true,
+                                    "conditionalInput": {
+                                        "id": "ca760a95-b883-49c0-b685-3be341908368",
+                                        "text": "Are they protected from the general public?",
+                                        "value": null,
+                                        "type": "Q_YES_NO"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
