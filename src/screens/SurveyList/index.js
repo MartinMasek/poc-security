@@ -89,7 +89,7 @@ export class SurveyList extends React.Component {
                             style={{
                                 marginBottom: 12,
                             }}>
-                            <Text style={{ fontSize: 17 }}>{item.name}</Text>
+                            <Text style={{ fontSize: 17, fontWeight: fonts.semibold }}>{item.name}</Text>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                             <View style={{ alignItems: 'center', marginTop: 4, width: 120 }}>
