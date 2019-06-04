@@ -129,7 +129,7 @@ export class SurveyList extends React.Component {
                                         <AvatarImage id={3} imageUri="../../../assets/images/rachel.png" />
                                     </View>
                                     <Text style={{ color: 'gray', marginTop: 4, fontSize: fonts.miniFont }}>
-                                        Sharat Karra
+                                    Rajaram Mohanraj
                                     </Text>
                                 </View>
                             )}
