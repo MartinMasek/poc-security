@@ -1,0 +1,42 @@
+{
+    "id": "2f68bcae-6eab-47ac-8c09-e9d7db4b3c37",
+    "name": "Emergency Contacts",
+    "area": "ADMINISTRATIVE",
+    "lastServerSync": 1548144114000,
+    "lastModification": null,
+    "questions": [
+        {
+            "inputs": [
+                {
+                    "id": "4c842aa4-6c25-4fd4-83eb-1d2f3ec10a3b",
+                    "text": "Office / Building / Facility Name",
+                    "value": null,
+                    "type": "Q_TEXT"
+                },
+                {
+                    "id": "93893156-fce7-4215-b856-63e4580850ee",
+                    "text": "Date",
+                    "value": "1/12/2018",
+                    "type": "Q_DATE"
+                }
+            ]
+        },
+        {
+            "title": "Test title",
+            "inputs": [
+                {
+                    "id": "dca8a7cb-17e9-4e6c-9d35-52ce5ae61463",
+                    "text": "Building Property Manager",
+                    "value": "John",
+                    "type": "Q_TEXT"
+                },
+                {
+                    "id": "57af89fc-4ccf-4a7e-91c8-ef10dd4bba6b",
+                    "text": "Mailing Address",
+                    "value": null,
+                    "type": "Q_TEXT"
+                }
+            ]
+        }
+    ]
+}
